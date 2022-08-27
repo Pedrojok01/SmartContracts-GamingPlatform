@@ -4,10 +4,7 @@
 import { Signer, utils, Contract, ContractFactory, Overrides } from "ethers";
 import type { Provider, TransactionRequest } from "@ethersproject/providers";
 import type { PromiseOrValue } from "../../common";
-import type {
-  PaymentManager,
-  PaymentManagerInterface,
-} from "../../contracts/PaymentManager";
+import type { PaymentManager, PaymentManagerInterface } from "../../contracts/PaymentManager";
 
 const _abi = [
   {
@@ -285,9 +282,7 @@ type PaymentManagerConstructorParams =
   | [linkLibraryAddresses: PaymentManagerLibraryAddresses, signer?: Signer]
   | ConstructorParameters<typeof ContractFactory>;
 
-const isSuperArgs = (
-  xs: PaymentManagerConstructorParams
-): xs is ConstructorParameters<typeof ContractFactory> => {
+const isSuperArgs = (xs: PaymentManagerConstructorParams): xs is ConstructorParameters<typeof ContractFactory> => {
   return (
     typeof xs[0] === "string" ||
     (Array.isArray as (arg: any) => arg is readonly any[])(xs[0]) ||
@@ -301,24 +296,16 @@ export class PaymentManager__factory extends ContractFactory {
       super(...args);
     } else {
       const [linkLibraryAddresses, signer] = args;
-      super(
-        _abi,
-        PaymentManager__factory.linkBytecode(linkLibraryAddresses),
-        signer
-      );
+      super(_abi, PaymentManager__factory.linkBytecode(linkLibraryAddresses), signer);
     }
   }
 
-  static linkBytecode(
-    linkLibraryAddresses: PaymentManagerLibraryAddresses
-  ): string {
+  static linkBytecode(linkLibraryAddresses: PaymentManagerLibraryAddresses): string {
     let linkedBytecode = _bytecode;
 
     linkedBytecode = linkedBytecode.replace(
       new RegExp("__\\$4d4db2fd1e25d93f472c3ce2e92eb4695e\\$__", "g"),
-      linkLibraryAddresses["contracts/libraries/LevelLib.sol:LevelLib"]
-        .replace(/^0x/, "")
-        .toLowerCase()
+      linkLibraryAddresses["contracts/libraries/LevelLib.sol:LevelLib"].replace(/^0x/, "").toLowerCase()
     );
 
     return linkedBytecode;
@@ -330,12 +317,7 @@ export class PaymentManager__factory extends ContractFactory {
     _gameFactoryAddress: PromiseOrValue<string>,
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<PaymentManager> {
-    return super.deploy(
-      _token,
-      _paymentAddress,
-      _gameFactoryAddress,
-      overrides || {}
-    ) as Promise<PaymentManager>;
+    return super.deploy(_token, _paymentAddress, _gameFactoryAddress, overrides || {}) as Promise<PaymentManager>;
   }
   override getDeployTransaction(
     _token: PromiseOrValue<string>,
@@ -343,12 +325,7 @@ export class PaymentManager__factory extends ContractFactory {
     _gameFactoryAddress: PromiseOrValue<string>,
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): TransactionRequest {
-    return super.getDeployTransaction(
-      _token,
-      _paymentAddress,
-      _gameFactoryAddress,
-      overrides || {}
-    );
+    return super.getDeployTransaction(_token, _paymentAddress, _gameFactoryAddress, overrides || {});
   }
   override attach(address: string): PaymentManager {
     return super.attach(address) as PaymentManager;
@@ -362,10 +339,7 @@ export class PaymentManager__factory extends ContractFactory {
   static createInterface(): PaymentManagerInterface {
     return new utils.Interface(_abi) as PaymentManagerInterface;
   }
-  static connect(
-    address: string,
-    signerOrProvider: Signer | Provider
-  ): PaymentManager {
+  static connect(address: string, signerOrProvider: Signer | Provider): PaymentManager {
     return new Contract(address, _abi, signerOrProvider) as PaymentManager;
   }
 }

@@ -4,10 +4,7 @@
 
 import { Contract, Signer, utils } from "ethers";
 import type { Provider } from "@ethersproject/providers";
-import type {
-  Ownable,
-  OwnableInterface,
-} from "../../../../@openzeppelin/contracts/access/Ownable";
+import type { Ownable, OwnableInterface } from "../../../../@openzeppelin/contracts/access/Ownable";
 
 const _abi = [
   {
@@ -69,10 +66,7 @@ export class Ownable__factory {
   static createInterface(): OwnableInterface {
     return new utils.Interface(_abi) as OwnableInterface;
   }
-  static connect(
-    address: string,
-    signerOrProvider: Signer | Provider
-  ): Ownable {
+  static connect(address: string, signerOrProvider: Signer | Provider): Ownable {
     return new Contract(address, _abi, signerOrProvider) as Ownable;
   }
 }

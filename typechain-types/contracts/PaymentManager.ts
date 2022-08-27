@@ -13,19 +13,9 @@ import type {
   Signer,
   utils,
 } from "ethers";
-import type {
-  FunctionFragment,
-  Result,
-  EventFragment,
-} from "@ethersproject/abi";
+import type { FunctionFragment, Result, EventFragment } from "@ethersproject/abi";
 import type { Listener, Provider } from "@ethersproject/providers";
-import type {
-  TypedEventFilter,
-  TypedEvent,
-  TypedListener,
-  OnEvent,
-  PromiseOrValue,
-} from "../common";
+import type { TypedEventFilter, TypedEvent, TypedListener, OnEvent, PromiseOrValue } from "../common";
 
 export interface PaymentManagerInterface extends utils.Interface {
   functions: {
@@ -57,77 +47,32 @@ export interface PaymentManagerInterface extends utils.Interface {
       | "withdrawBatch"
   ): FunctionFragment;
 
-  encodeFunctionData(
-    functionFragment: "minimumLevel",
-    values?: undefined
-  ): string;
+  encodeFunctionData(functionFragment: "minimumLevel", values?: undefined): string;
   encodeFunctionData(functionFragment: "owner", values?: undefined): string;
   encodeFunctionData(functionFragment: "paused", values?: undefined): string;
-  encodeFunctionData(
-    functionFragment: "paymentAddress",
-    values?: undefined
-  ): string;
-  encodeFunctionData(
-    functionFragment: "renounceOwnership",
-    values?: undefined
-  ): string;
-  encodeFunctionData(
-    functionFragment: "setMinimumAmount",
-    values: [PromiseOrValue<BigNumberish>]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "setMinimumLevel",
-    values: [PromiseOrValue<BigNumberish>]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "setNewPaymentAddress",
-    values: [PromiseOrValue<string>]
-  ): string;
+  encodeFunctionData(functionFragment: "paymentAddress", values?: undefined): string;
+  encodeFunctionData(functionFragment: "renounceOwnership", values?: undefined): string;
+  encodeFunctionData(functionFragment: "setMinimumAmount", values: [PromiseOrValue<BigNumberish>]): string;
+  encodeFunctionData(functionFragment: "setMinimumLevel", values: [PromiseOrValue<BigNumberish>]): string;
+  encodeFunctionData(functionFragment: "setNewPaymentAddress", values: [PromiseOrValue<string>]): string;
   encodeFunctionData(functionFragment: "token", values?: undefined): string;
-  encodeFunctionData(
-    functionFragment: "transferOwnership",
-    values: [PromiseOrValue<string>]
-  ): string;
+  encodeFunctionData(functionFragment: "transferOwnership", values: [PromiseOrValue<string>]): string;
   encodeFunctionData(
     functionFragment: "withdrawBatch",
     values: [PromiseOrValue<string>[], PromiseOrValue<BigNumberish>[]]
   ): string;
 
-  decodeFunctionResult(
-    functionFragment: "minimumLevel",
-    data: BytesLike
-  ): Result;
+  decodeFunctionResult(functionFragment: "minimumLevel", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "owner", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "paused", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "paymentAddress",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "renounceOwnership",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "setMinimumAmount",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "setMinimumLevel",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "setNewPaymentAddress",
-    data: BytesLike
-  ): Result;
+  decodeFunctionResult(functionFragment: "paymentAddress", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "renounceOwnership", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "setMinimumAmount", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "setMinimumLevel", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "setNewPaymentAddress", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "token", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "transferOwnership",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "withdrawBatch",
-    data: BytesLike
-  ): Result;
+  decodeFunctionResult(functionFragment: "transferOwnership", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "withdrawBatch", data: BytesLike): Result;
 
   events: {
     "MinimumAmountSet(uint256)": EventFragment;
@@ -151,21 +96,14 @@ export interface PaymentManagerInterface extends utils.Interface {
 export interface MinimumAmountSetEventObject {
   amount: BigNumber;
 }
-export type MinimumAmountSetEvent = TypedEvent<
-  [BigNumber],
-  MinimumAmountSetEventObject
->;
+export type MinimumAmountSetEvent = TypedEvent<[BigNumber], MinimumAmountSetEventObject>;
 
-export type MinimumAmountSetEventFilter =
-  TypedEventFilter<MinimumAmountSetEvent>;
+export type MinimumAmountSetEventFilter = TypedEventFilter<MinimumAmountSetEvent>;
 
 export interface MinimumLevelSetEventObject {
   level: number;
 }
-export type MinimumLevelSetEvent = TypedEvent<
-  [number],
-  MinimumLevelSetEventObject
->;
+export type MinimumLevelSetEvent = TypedEvent<[number], MinimumLevelSetEventObject>;
 
 export type MinimumLevelSetEventFilter = TypedEventFilter<MinimumLevelSetEvent>;
 
@@ -173,13 +111,9 @@ export interface OwnershipTransferredEventObject {
   previousOwner: string;
   newOwner: string;
 }
-export type OwnershipTransferredEvent = TypedEvent<
-  [string, string],
-  OwnershipTransferredEventObject
->;
+export type OwnershipTransferredEvent = TypedEvent<[string, string], OwnershipTransferredEventObject>;
 
-export type OwnershipTransferredEventFilter =
-  TypedEventFilter<OwnershipTransferredEvent>;
+export type OwnershipTransferredEventFilter = TypedEventFilter<OwnershipTransferredEvent>;
 
 export interface PausedEventObject {
   account: string;
@@ -191,13 +125,9 @@ export type PausedEventFilter = TypedEventFilter<PausedEvent>;
 export interface PaymentAddressSetEventObject {
   _newPaymentAddress: string;
 }
-export type PaymentAddressSetEvent = TypedEvent<
-  [string],
-  PaymentAddressSetEventObject
->;
+export type PaymentAddressSetEvent = TypedEvent<[string], PaymentAddressSetEventObject>;
 
-export type PaymentAddressSetEventFilter =
-  TypedEventFilter<PaymentAddressSetEvent>;
+export type PaymentAddressSetEventFilter = TypedEventFilter<PaymentAddressSetEvent>;
 
 export interface UnpausedEventObject {
   account: string;
@@ -210,10 +140,7 @@ export interface WithdrawnBatchEventObject {
   player: string[];
   amount: BigNumber[];
 }
-export type WithdrawnBatchEvent = TypedEvent<
-  [string[], BigNumber[]],
-  WithdrawnBatchEventObject
->;
+export type WithdrawnBatchEvent = TypedEvent<[string[], BigNumber[]], WithdrawnBatchEventObject>;
 
 export type WithdrawnBatchEventFilter = TypedEventFilter<WithdrawnBatchEvent>;
 
@@ -230,13 +157,9 @@ export interface PaymentManager extends BaseContract {
     toBlock?: string | number | undefined
   ): Promise<Array<TEvent>>;
 
-  listeners<TEvent extends TypedEvent>(
-    eventFilter?: TypedEventFilter<TEvent>
-  ): Array<TypedListener<TEvent>>;
+  listeners<TEvent extends TypedEvent>(eventFilter?: TypedEventFilter<TEvent>): Array<TypedListener<TEvent>>;
   listeners(eventName?: string): Array<Listener>;
-  removeAllListeners<TEvent extends TypedEvent>(
-    eventFilter: TypedEventFilter<TEvent>
-  ): this;
+  removeAllListeners<TEvent extends TypedEvent>(eventFilter: TypedEventFilter<TEvent>): this;
   removeAllListeners(eventName?: string): this;
   off: OnEvent<this>;
   on: OnEvent<this>;
@@ -252,9 +175,7 @@ export interface PaymentManager extends BaseContract {
 
     paymentAddress(overrides?: CallOverrides): Promise<[string]>;
 
-    renounceOwnership(
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<ContractTransaction>;
+    renounceOwnership(overrides?: Overrides & { from?: PromiseOrValue<string> }): Promise<ContractTransaction>;
 
     setMinimumAmount(
       _newMin: PromiseOrValue<BigNumberish>,
@@ -293,9 +214,7 @@ export interface PaymentManager extends BaseContract {
 
   paymentAddress(overrides?: CallOverrides): Promise<string>;
 
-  renounceOwnership(
-    overrides?: Overrides & { from?: PromiseOrValue<string> }
-  ): Promise<ContractTransaction>;
+  renounceOwnership(overrides?: Overrides & { from?: PromiseOrValue<string> }): Promise<ContractTransaction>;
 
   setMinimumAmount(
     _newMin: PromiseOrValue<BigNumberish>,
@@ -336,27 +255,15 @@ export interface PaymentManager extends BaseContract {
 
     renounceOwnership(overrides?: CallOverrides): Promise<void>;
 
-    setMinimumAmount(
-      _newMin: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
-    ): Promise<void>;
+    setMinimumAmount(_newMin: PromiseOrValue<BigNumberish>, overrides?: CallOverrides): Promise<void>;
 
-    setMinimumLevel(
-      _newLevel: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
-    ): Promise<void>;
+    setMinimumLevel(_newLevel: PromiseOrValue<BigNumberish>, overrides?: CallOverrides): Promise<void>;
 
-    setNewPaymentAddress(
-      _newPaymentAddress: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<void>;
+    setNewPaymentAddress(_newPaymentAddress: PromiseOrValue<string>, overrides?: CallOverrides): Promise<void>;
 
     token(overrides?: CallOverrides): Promise<string>;
 
-    transferOwnership(
-      newOwner: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<void>;
+    transferOwnership(newOwner: PromiseOrValue<string>, overrides?: CallOverrides): Promise<void>;
 
     withdrawBatch(
       _to: PromiseOrValue<string>[],
@@ -384,18 +291,13 @@ export interface PaymentManager extends BaseContract {
     "Paused(address)"(account?: null): PausedEventFilter;
     Paused(account?: null): PausedEventFilter;
 
-    "PaymentAddressSet(address)"(
-      _newPaymentAddress?: null
-    ): PaymentAddressSetEventFilter;
+    "PaymentAddressSet(address)"(_newPaymentAddress?: null): PaymentAddressSetEventFilter;
     PaymentAddressSet(_newPaymentAddress?: null): PaymentAddressSetEventFilter;
 
     "Unpaused(address)"(account?: null): UnpausedEventFilter;
     Unpaused(account?: null): UnpausedEventFilter;
 
-    "WithdrawnBatch(address[],uint256[])"(
-      player?: null,
-      amount?: null
-    ): WithdrawnBatchEventFilter;
+    "WithdrawnBatch(address[],uint256[])"(player?: null, amount?: null): WithdrawnBatchEventFilter;
     WithdrawnBatch(player?: null, amount?: null): WithdrawnBatchEventFilter;
   };
 
@@ -408,9 +310,7 @@ export interface PaymentManager extends BaseContract {
 
     paymentAddress(overrides?: CallOverrides): Promise<BigNumber>;
 
-    renounceOwnership(
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<BigNumber>;
+    renounceOwnership(overrides?: Overrides & { from?: PromiseOrValue<string> }): Promise<BigNumber>;
 
     setMinimumAmount(
       _newMin: PromiseOrValue<BigNumberish>,
@@ -450,9 +350,7 @@ export interface PaymentManager extends BaseContract {
 
     paymentAddress(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    renounceOwnership(
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<PopulatedTransaction>;
+    renounceOwnership(overrides?: Overrides & { from?: PromiseOrValue<string> }): Promise<PopulatedTransaction>;
 
     setMinimumAmount(
       _newMin: PromiseOrValue<BigNumberish>,

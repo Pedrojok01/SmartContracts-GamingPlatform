@@ -13,19 +13,9 @@ import type {
   Signer,
   utils,
 } from "ethers";
-import type {
-  FunctionFragment,
-  Result,
-  EventFragment,
-} from "@ethersproject/abi";
+import type { FunctionFragment, Result, EventFragment } from "@ethersproject/abi";
 import type { Listener, Provider } from "@ethersproject/providers";
-import type {
-  TypedEventFilter,
-  TypedEvent,
-  TypedListener,
-  OnEvent,
-  PromiseOrValue,
-} from "../common";
+import type { TypedEventFilter, TypedEvent, TypedListener, OnEvent, PromiseOrValue } from "../common";
 
 export declare namespace SharedStructs {
   export type NftStatStruct = {
@@ -36,13 +26,7 @@ export declare namespace SharedStructs {
     since: PromiseOrValue<BigNumberish>;
   };
 
-  export type NftStatStructOutput = [
-    boolean,
-    string,
-    BigNumber,
-    BigNumber,
-    BigNumber
-  ] & {
+  export type NftStatStructOutput = [boolean, string, BigNumber, BigNumber, BigNumber] & {
     isNft: boolean;
     nftContractAddress: string;
     tokenId: BigNumber;
@@ -60,15 +44,7 @@ export declare namespace SharedStructs {
     bestScore: PromiseOrValue<BigNumberish>;
   };
 
-  export type PlayerStructOutput = [
-    string,
-    BigNumber,
-    BigNumber,
-    BigNumber,
-    BigNumber,
-    BigNumber,
-    BigNumber
-  ] & {
+  export type PlayerStructOutput = [string, BigNumber, BigNumber, BigNumber, BigNumber, BigNumber, BigNumber] & {
     user: string;
     xp: BigNumber;
     sessionsPlayed: BigNumber;
@@ -141,14 +117,8 @@ export interface GameInterface extends utils.Interface {
       | "updateAllPlayersStats"
   ): FunctionFragment;
 
-  encodeFunctionData(
-    functionFragment: "activePlayersLastRanking",
-    values?: undefined
-  ): string;
-  encodeFunctionData(
-    functionFragment: "addAllowedCollection",
-    values: [PromiseOrValue<string>]
-  ): string;
+  encodeFunctionData(functionFragment: "activePlayersLastRanking", values?: undefined): string;
+  encodeFunctionData(functionFragment: "addAllowedCollection", values: [PromiseOrValue<string>]): string;
   encodeFunctionData(
     functionFragment: "addNewPlayer",
     values: [
@@ -166,69 +136,27 @@ export interface GameInterface extends utils.Interface {
   ): string;
   encodeFunctionData(functionFragment: "gameID", values?: undefined): string;
   encodeFunctionData(functionFragment: "gameName", values?: undefined): string;
-  encodeFunctionData(
-    functionFragment: "getPlayerNftStats",
-    values: [PromiseOrValue<string>]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "getPlayerStats",
-    values: [PromiseOrValue<string>]
-  ): string;
+  encodeFunctionData(functionFragment: "getPlayerNftStats", values: [PromiseOrValue<string>]): string;
+  encodeFunctionData(functionFragment: "getPlayerStats", values: [PromiseOrValue<string>]): string;
   encodeFunctionData(functionFragment: "getTop10", values?: undefined): string;
-  encodeFunctionData(
-    functionFragment: "getTotalSessionsPlayed",
-    values?: undefined
-  ): string;
-  encodeFunctionData(
-    functionFragment: "isNftAllowed",
-    values: [PromiseOrValue<string>]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "isPlayerInGameId",
-    values: [PromiseOrValue<string>]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "nftStat",
-    values: [PromiseOrValue<string>]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "numberOfPlayers",
-    values?: undefined
-  ): string;
+  encodeFunctionData(functionFragment: "getTotalSessionsPlayed", values?: undefined): string;
+  encodeFunctionData(functionFragment: "isNftAllowed", values: [PromiseOrValue<string>]): string;
+  encodeFunctionData(functionFragment: "isPlayerInGameId", values: [PromiseOrValue<string>]): string;
+  encodeFunctionData(functionFragment: "nftStat", values: [PromiseOrValue<string>]): string;
+  encodeFunctionData(functionFragment: "numberOfPlayers", values?: undefined): string;
   encodeFunctionData(functionFragment: "owner", values?: undefined): string;
   encodeFunctionData(functionFragment: "paused", values?: undefined): string;
-  encodeFunctionData(
-    functionFragment: "player",
-    values: [PromiseOrValue<string>]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "playerAddress",
-    values: [PromiseOrValue<BigNumberish>]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "playerIndex",
-    values: [PromiseOrValue<string>]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "removeAllowedCollection",
-    values: [PromiseOrValue<string>]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "renounceOwnership",
-    values?: undefined
-  ): string;
-  encodeFunctionData(
-    functionFragment: "resetAllrankingScores",
-    values?: undefined
-  ): string;
+  encodeFunctionData(functionFragment: "player", values: [PromiseOrValue<string>]): string;
+  encodeFunctionData(functionFragment: "playerAddress", values: [PromiseOrValue<BigNumberish>]): string;
+  encodeFunctionData(functionFragment: "playerIndex", values: [PromiseOrValue<string>]): string;
+  encodeFunctionData(functionFragment: "removeAllowedCollection", values: [PromiseOrValue<string>]): string;
+  encodeFunctionData(functionFragment: "renounceOwnership", values?: undefined): string;
+  encodeFunctionData(functionFragment: "resetAllrankingScores", values?: undefined): string;
   encodeFunctionData(
     functionFragment: "resetClaimable",
     values: [PromiseOrValue<string>, PromiseOrValue<BigNumberish>]
   ): string;
-  encodeFunctionData(
-    functionFragment: "resetNftStatus",
-    values: [PromiseOrValue<string>]
-  ): string;
+  encodeFunctionData(functionFragment: "resetNftStatus", values: [PromiseOrValue<string>]): string;
   encodeFunctionData(
     functionFragment: "setNftStatus",
     values: [
@@ -239,102 +167,39 @@ export interface GameInterface extends utils.Interface {
       PromiseOrValue<BigNumberish>
     ]
   ): string;
-  encodeFunctionData(
-    functionFragment: "transferOwnership",
-    values: [PromiseOrValue<string>]
-  ): string;
+  encodeFunctionData(functionFragment: "transferOwnership", values: [PromiseOrValue<string>]): string;
   encodeFunctionData(
     functionFragment: "updateAllPlayersStats",
     values: [PromiseOrValue<string>[], PromiseOrValue<BigNumberish>[]]
   ): string;
 
-  decodeFunctionResult(
-    functionFragment: "activePlayersLastRanking",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "addAllowedCollection",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "addNewPlayer",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "distributeRewards",
-    data: BytesLike
-  ): Result;
+  decodeFunctionResult(functionFragment: "activePlayersLastRanking", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "addAllowedCollection", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "addNewPlayer", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "distributeRewards", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "gameID", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "gameName", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "getPlayerNftStats",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "getPlayerStats",
-    data: BytesLike
-  ): Result;
+  decodeFunctionResult(functionFragment: "getPlayerNftStats", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "getPlayerStats", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "getTop10", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "getTotalSessionsPlayed",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "isNftAllowed",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "isPlayerInGameId",
-    data: BytesLike
-  ): Result;
+  decodeFunctionResult(functionFragment: "getTotalSessionsPlayed", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "isNftAllowed", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "isPlayerInGameId", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "nftStat", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "numberOfPlayers",
-    data: BytesLike
-  ): Result;
+  decodeFunctionResult(functionFragment: "numberOfPlayers", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "owner", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "paused", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "player", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "playerAddress",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "playerIndex",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "removeAllowedCollection",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "renounceOwnership",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "resetAllrankingScores",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "resetClaimable",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "resetNftStatus",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "setNftStatus",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "transferOwnership",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "updateAllPlayersStats",
-    data: BytesLike
-  ): Result;
+  decodeFunctionResult(functionFragment: "playerAddress", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "playerIndex", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "removeAllowedCollection", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "renounceOwnership", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "resetAllrankingScores", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "resetClaimable", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "resetNftStatus", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "setNftStatus", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "transferOwnership", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "updateAllPlayersStats", data: BytesLike): Result;
 
   events: {
     "OwnershipTransferred(address,address)": EventFragment;
@@ -355,13 +220,9 @@ export interface OwnershipTransferredEventObject {
   previousOwner: string;
   newOwner: string;
 }
-export type OwnershipTransferredEvent = TypedEvent<
-  [string, string],
-  OwnershipTransferredEventObject
->;
+export type OwnershipTransferredEvent = TypedEvent<[string, string], OwnershipTransferredEventObject>;
 
-export type OwnershipTransferredEventFilter =
-  TypedEventFilter<OwnershipTransferredEvent>;
+export type OwnershipTransferredEventFilter = TypedEventFilter<OwnershipTransferredEvent>;
 
 export interface PausedEventObject {
   account: string;
@@ -375,10 +236,7 @@ export interface RankingResetEventObject {
   numOfActivePlayers: BigNumber;
   timestamp: BigNumber;
 }
-export type RankingResetEvent = TypedEvent<
-  [BigNumber, BigNumber, BigNumber],
-  RankingResetEventObject
->;
+export type RankingResetEvent = TypedEvent<[BigNumber, BigNumber, BigNumber], RankingResetEventObject>;
 
 export type RankingResetEventFilter = TypedEventFilter<RankingResetEvent>;
 
@@ -387,13 +245,9 @@ export interface RewardsDistributedEventObject {
   amountToDistribute: BigNumber;
   rewardStructure: number[];
 }
-export type RewardsDistributedEvent = TypedEvent<
-  [string[], BigNumber, number[]],
-  RewardsDistributedEventObject
->;
+export type RewardsDistributedEvent = TypedEvent<[string[], BigNumber, number[]], RewardsDistributedEventObject>;
 
-export type RewardsDistributedEventFilter =
-  TypedEventFilter<RewardsDistributedEvent>;
+export type RewardsDistributedEventFilter = TypedEventFilter<RewardsDistributedEvent>;
 
 export interface UnpausedEventObject {
   account: string;
@@ -415,13 +269,9 @@ export interface Game extends BaseContract {
     toBlock?: string | number | undefined
   ): Promise<Array<TEvent>>;
 
-  listeners<TEvent extends TypedEvent>(
-    eventFilter?: TypedEventFilter<TEvent>
-  ): Array<TypedListener<TEvent>>;
+  listeners<TEvent extends TypedEvent>(eventFilter?: TypedEventFilter<TEvent>): Array<TypedListener<TEvent>>;
   listeners(eventName?: string): Array<Listener>;
-  removeAllListeners<TEvent extends TypedEvent>(
-    eventFilter: TypedEventFilter<TEvent>
-  ): this;
+  removeAllListeners<TEvent extends TypedEvent>(eventFilter: TypedEventFilter<TEvent>): this;
   removeAllListeners(eventName?: string): this;
   off: OnEvent<this>;
   on: OnEvent<this>;
@@ -473,14 +323,9 @@ export interface Game extends BaseContract {
     isNftAllowed(
       arg0: PromiseOrValue<string>,
       overrides?: CallOverrides
-    ): Promise<
-      [string, boolean] & { nftContractAddress: string; isAllowed: boolean }
-    >;
+    ): Promise<[string, boolean] & { nftContractAddress: string; isAllowed: boolean }>;
 
-    isPlayerInGameId(
-      _player: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<[boolean]>;
+    isPlayerInGameId(_player: PromiseOrValue<string>, overrides?: CallOverrides): Promise<[boolean]>;
 
     nftStat(
       arg0: PromiseOrValue<string>,
@@ -505,15 +350,7 @@ export interface Game extends BaseContract {
       arg0: PromiseOrValue<string>,
       overrides?: CallOverrides
     ): Promise<
-      [
-        string,
-        BigNumber,
-        BigNumber,
-        BigNumber,
-        BigNumber,
-        BigNumber,
-        BigNumber
-      ] & {
+      [string, BigNumber, BigNumber, BigNumber, BigNumber, BigNumber, BigNumber] & {
         user: string;
         xp: BigNumber;
         sessionsPlayed: BigNumber;
@@ -524,28 +361,18 @@ export interface Game extends BaseContract {
       }
     >;
 
-    playerAddress(
-      arg0: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
-    ): Promise<[string]>;
+    playerAddress(arg0: PromiseOrValue<BigNumberish>, overrides?: CallOverrides): Promise<[string]>;
 
-    playerIndex(
-      arg0: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<[BigNumber]>;
+    playerIndex(arg0: PromiseOrValue<string>, overrides?: CallOverrides): Promise<[BigNumber]>;
 
     removeAllowedCollection(
       _collection: PromiseOrValue<string>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
 
-    renounceOwnership(
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<ContractTransaction>;
+    renounceOwnership(overrides?: Overrides & { from?: PromiseOrValue<string> }): Promise<ContractTransaction>;
 
-    resetAllrankingScores(
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<ContractTransaction>;
+    resetAllrankingScores(overrides?: Overrides & { from?: PromiseOrValue<string> }): Promise<ContractTransaction>;
 
     resetClaimable(
       _player: PromiseOrValue<string>,
@@ -611,10 +438,7 @@ export interface Game extends BaseContract {
     overrides?: CallOverrides
   ): Promise<SharedStructs.NftStatStructOutput>;
 
-  getPlayerStats(
-    _player: PromiseOrValue<string>,
-    overrides?: CallOverrides
-  ): Promise<SharedStructs.PlayerStructOutput>;
+  getPlayerStats(_player: PromiseOrValue<string>, overrides?: CallOverrides): Promise<SharedStructs.PlayerStructOutput>;
 
   getTop10(overrides?: CallOverrides): Promise<[string[], BigNumber[]]>;
 
@@ -623,14 +447,9 @@ export interface Game extends BaseContract {
   isNftAllowed(
     arg0: PromiseOrValue<string>,
     overrides?: CallOverrides
-  ): Promise<
-    [string, boolean] & { nftContractAddress: string; isAllowed: boolean }
-  >;
+  ): Promise<[string, boolean] & { nftContractAddress: string; isAllowed: boolean }>;
 
-  isPlayerInGameId(
-    _player: PromiseOrValue<string>,
-    overrides?: CallOverrides
-  ): Promise<boolean>;
+  isPlayerInGameId(_player: PromiseOrValue<string>, overrides?: CallOverrides): Promise<boolean>;
 
   nftStat(
     arg0: PromiseOrValue<string>,
@@ -655,15 +474,7 @@ export interface Game extends BaseContract {
     arg0: PromiseOrValue<string>,
     overrides?: CallOverrides
   ): Promise<
-    [
-      string,
-      BigNumber,
-      BigNumber,
-      BigNumber,
-      BigNumber,
-      BigNumber,
-      BigNumber
-    ] & {
+    [string, BigNumber, BigNumber, BigNumber, BigNumber, BigNumber, BigNumber] & {
       user: string;
       xp: BigNumber;
       sessionsPlayed: BigNumber;
@@ -674,28 +485,18 @@ export interface Game extends BaseContract {
     }
   >;
 
-  playerAddress(
-    arg0: PromiseOrValue<BigNumberish>,
-    overrides?: CallOverrides
-  ): Promise<string>;
+  playerAddress(arg0: PromiseOrValue<BigNumberish>, overrides?: CallOverrides): Promise<string>;
 
-  playerIndex(
-    arg0: PromiseOrValue<string>,
-    overrides?: CallOverrides
-  ): Promise<BigNumber>;
+  playerIndex(arg0: PromiseOrValue<string>, overrides?: CallOverrides): Promise<BigNumber>;
 
   removeAllowedCollection(
     _collection: PromiseOrValue<string>,
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
 
-  renounceOwnership(
-    overrides?: Overrides & { from?: PromiseOrValue<string> }
-  ): Promise<ContractTransaction>;
+  renounceOwnership(overrides?: Overrides & { from?: PromiseOrValue<string> }): Promise<ContractTransaction>;
 
-  resetAllrankingScores(
-    overrides?: Overrides & { from?: PromiseOrValue<string> }
-  ): Promise<ContractTransaction>;
+  resetAllrankingScores(overrides?: Overrides & { from?: PromiseOrValue<string> }): Promise<ContractTransaction>;
 
   resetClaimable(
     _player: PromiseOrValue<string>,
@@ -731,10 +532,7 @@ export interface Game extends BaseContract {
   callStatic: {
     activePlayersLastRanking(overrides?: CallOverrides): Promise<BigNumber>;
 
-    addAllowedCollection(
-      _collection: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<void>;
+    addAllowedCollection(_collection: PromiseOrValue<string>, overrides?: CallOverrides): Promise<void>;
 
     addNewPlayer(
       _player: PromiseOrValue<string>,
@@ -773,14 +571,9 @@ export interface Game extends BaseContract {
     isNftAllowed(
       arg0: PromiseOrValue<string>,
       overrides?: CallOverrides
-    ): Promise<
-      [string, boolean] & { nftContractAddress: string; isAllowed: boolean }
-    >;
+    ): Promise<[string, boolean] & { nftContractAddress: string; isAllowed: boolean }>;
 
-    isPlayerInGameId(
-      _player: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<boolean>;
+    isPlayerInGameId(_player: PromiseOrValue<string>, overrides?: CallOverrides): Promise<boolean>;
 
     nftStat(
       arg0: PromiseOrValue<string>,
@@ -805,15 +598,7 @@ export interface Game extends BaseContract {
       arg0: PromiseOrValue<string>,
       overrides?: CallOverrides
     ): Promise<
-      [
-        string,
-        BigNumber,
-        BigNumber,
-        BigNumber,
-        BigNumber,
-        BigNumber,
-        BigNumber
-      ] & {
+      [string, BigNumber, BigNumber, BigNumber, BigNumber, BigNumber, BigNumber] & {
         user: string;
         xp: BigNumber;
         sessionsPlayed: BigNumber;
@@ -824,20 +609,11 @@ export interface Game extends BaseContract {
       }
     >;
 
-    playerAddress(
-      arg0: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
-    ): Promise<string>;
+    playerAddress(arg0: PromiseOrValue<BigNumberish>, overrides?: CallOverrides): Promise<string>;
 
-    playerIndex(
-      arg0: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    playerIndex(arg0: PromiseOrValue<string>, overrides?: CallOverrides): Promise<BigNumber>;
 
-    removeAllowedCollection(
-      _collection: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<void>;
+    removeAllowedCollection(_collection: PromiseOrValue<string>, overrides?: CallOverrides): Promise<void>;
 
     renounceOwnership(overrides?: CallOverrides): Promise<void>;
 
@@ -849,10 +625,7 @@ export interface Game extends BaseContract {
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    resetNftStatus(
-      _player: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<void>;
+    resetNftStatus(_player: PromiseOrValue<string>, overrides?: CallOverrides): Promise<void>;
 
     setNftStatus(
       _player: PromiseOrValue<string>,
@@ -863,10 +636,7 @@ export interface Game extends BaseContract {
       overrides?: CallOverrides
     ): Promise<void>;
 
-    transferOwnership(
-      newOwner: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<void>;
+    transferOwnership(newOwner: PromiseOrValue<string>, overrides?: CallOverrides): Promise<void>;
 
     updateAllPlayersStats(
       _players: PromiseOrValue<string>[],
@@ -893,22 +663,14 @@ export interface Game extends BaseContract {
       numOfActivePlayers?: null,
       timestamp?: null
     ): RankingResetEventFilter;
-    RankingReset(
-      numOfPlayers?: null,
-      numOfActivePlayers?: null,
-      timestamp?: null
-    ): RankingResetEventFilter;
+    RankingReset(numOfPlayers?: null, numOfActivePlayers?: null, timestamp?: null): RankingResetEventFilter;
 
     "RewardsDistributed(address[10],uint256,uint8[10])"(
       top10?: null,
       amountToDistribute?: null,
       rewardStructure?: null
     ): RewardsDistributedEventFilter;
-    RewardsDistributed(
-      top10?: null,
-      amountToDistribute?: null,
-      rewardStructure?: null
-    ): RewardsDistributedEventFilter;
+    RewardsDistributed(top10?: null, amountToDistribute?: null, rewardStructure?: null): RewardsDistributedEventFilter;
 
     "Unpaused(address)"(account?: null): UnpausedEventFilter;
     Unpaused(account?: null): UnpausedEventFilter;
@@ -942,34 +704,19 @@ export interface Game extends BaseContract {
 
     gameName(overrides?: CallOverrides): Promise<BigNumber>;
 
-    getPlayerNftStats(
-      _player: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    getPlayerNftStats(_player: PromiseOrValue<string>, overrides?: CallOverrides): Promise<BigNumber>;
 
-    getPlayerStats(
-      _player: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    getPlayerStats(_player: PromiseOrValue<string>, overrides?: CallOverrides): Promise<BigNumber>;
 
     getTop10(overrides?: CallOverrides): Promise<BigNumber>;
 
     getTotalSessionsPlayed(overrides?: CallOverrides): Promise<BigNumber>;
 
-    isNftAllowed(
-      arg0: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    isNftAllowed(arg0: PromiseOrValue<string>, overrides?: CallOverrides): Promise<BigNumber>;
 
-    isPlayerInGameId(
-      _player: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    isPlayerInGameId(_player: PromiseOrValue<string>, overrides?: CallOverrides): Promise<BigNumber>;
 
-    nftStat(
-      arg0: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    nftStat(arg0: PromiseOrValue<string>, overrides?: CallOverrides): Promise<BigNumber>;
 
     numberOfPlayers(overrides?: CallOverrides): Promise<BigNumber>;
 
@@ -977,33 +724,20 @@ export interface Game extends BaseContract {
 
     paused(overrides?: CallOverrides): Promise<BigNumber>;
 
-    player(
-      arg0: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    player(arg0: PromiseOrValue<string>, overrides?: CallOverrides): Promise<BigNumber>;
 
-    playerAddress(
-      arg0: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    playerAddress(arg0: PromiseOrValue<BigNumberish>, overrides?: CallOverrides): Promise<BigNumber>;
 
-    playerIndex(
-      arg0: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    playerIndex(arg0: PromiseOrValue<string>, overrides?: CallOverrides): Promise<BigNumber>;
 
     removeAllowedCollection(
       _collection: PromiseOrValue<string>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
 
-    renounceOwnership(
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<BigNumber>;
+    renounceOwnership(overrides?: Overrides & { from?: PromiseOrValue<string> }): Promise<BigNumber>;
 
-    resetAllrankingScores(
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<BigNumber>;
+    resetAllrankingScores(overrides?: Overrides & { from?: PromiseOrValue<string> }): Promise<BigNumber>;
 
     resetClaimable(
       _player: PromiseOrValue<string>,
@@ -1038,9 +772,7 @@ export interface Game extends BaseContract {
   };
 
   populateTransaction: {
-    activePlayersLastRanking(
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    activePlayersLastRanking(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     addAllowedCollection(
       _collection: PromiseOrValue<string>,
@@ -1067,36 +799,19 @@ export interface Game extends BaseContract {
 
     gameName(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    getPlayerNftStats(
-      _player: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    getPlayerNftStats(_player: PromiseOrValue<string>, overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    getPlayerStats(
-      _player: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    getPlayerStats(_player: PromiseOrValue<string>, overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     getTop10(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    getTotalSessionsPlayed(
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    getTotalSessionsPlayed(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    isNftAllowed(
-      arg0: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    isNftAllowed(arg0: PromiseOrValue<string>, overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    isPlayerInGameId(
-      _player: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    isPlayerInGameId(_player: PromiseOrValue<string>, overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    nftStat(
-      arg0: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    nftStat(arg0: PromiseOrValue<string>, overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     numberOfPlayers(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
@@ -1104,33 +819,20 @@ export interface Game extends BaseContract {
 
     paused(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    player(
-      arg0: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    player(arg0: PromiseOrValue<string>, overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    playerAddress(
-      arg0: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    playerAddress(arg0: PromiseOrValue<BigNumberish>, overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    playerIndex(
-      arg0: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    playerIndex(arg0: PromiseOrValue<string>, overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     removeAllowedCollection(
       _collection: PromiseOrValue<string>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
 
-    renounceOwnership(
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<PopulatedTransaction>;
+    renounceOwnership(overrides?: Overrides & { from?: PromiseOrValue<string> }): Promise<PopulatedTransaction>;
 
-    resetAllrankingScores(
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<PopulatedTransaction>;
+    resetAllrankingScores(overrides?: Overrides & { from?: PromiseOrValue<string> }): Promise<PopulatedTransaction>;
 
     resetClaimable(
       _player: PromiseOrValue<string>,

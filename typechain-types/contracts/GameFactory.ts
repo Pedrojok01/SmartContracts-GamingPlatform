@@ -13,19 +13,9 @@ import type {
   Signer,
   utils,
 } from "ethers";
-import type {
-  FunctionFragment,
-  Result,
-  EventFragment,
-} from "@ethersproject/abi";
+import type { FunctionFragment, Result, EventFragment } from "@ethersproject/abi";
 import type { Listener, Provider } from "@ethersproject/providers";
-import type {
-  TypedEventFilter,
-  TypedEvent,
-  TypedListener,
-  OnEvent,
-  PromiseOrValue,
-} from "../common";
+import type { TypedEventFilter, TypedEvent, TypedListener, OnEvent, PromiseOrValue } from "../common";
 
 export declare namespace SharedStructs {
   export type GlobalPlayerStatsStruct = {
@@ -37,14 +27,7 @@ export declare namespace SharedStructs {
     consecutiveLogin: PromiseOrValue<BigNumberish>;
   };
 
-  export type GlobalPlayerStatsStructOutput = [
-    string,
-    BigNumber,
-    BigNumber,
-    BigNumber,
-    BigNumber,
-    BigNumber
-  ] & {
+  export type GlobalPlayerStatsStructOutput = [string, BigNumber, BigNumber, BigNumber, BigNumber, BigNumber] & {
     player: string;
     totalXp: BigNumber;
     totalSessionsPlayed: BigNumber;
@@ -98,127 +81,46 @@ export interface GameFactoryInterface extends utils.Interface {
       | "updatAllPlayersLogin"
   ): FunctionFragment;
 
-  encodeFunctionData(
-    functionFragment: "createNewGame",
-    values: [PromiseOrValue<BytesLike>]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "gamesList",
-    values: [PromiseOrValue<BigNumberish>]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "getGameAddress",
-    values: [PromiseOrValue<BigNumberish>]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "getGameId",
-    values: [PromiseOrValue<BytesLike>]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "getGameIdPlayedPerPlayer",
-    values: [PromiseOrValue<string>]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "getGamePerIndex",
-    values: [PromiseOrValue<BigNumberish>]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "getGlobalPlayerStats",
-    values: [PromiseOrValue<string>]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "getGlobalSessionsPlayed",
-    values?: undefined
-  ): string;
-  encodeFunctionData(
-    functionFragment: "getLoginStatusOf",
-    values: [PromiseOrValue<string>]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "getNumberOfGames",
-    values?: undefined
-  ): string;
+  encodeFunctionData(functionFragment: "createNewGame", values: [PromiseOrValue<BytesLike>]): string;
+  encodeFunctionData(functionFragment: "gamesList", values: [PromiseOrValue<BigNumberish>]): string;
+  encodeFunctionData(functionFragment: "getGameAddress", values: [PromiseOrValue<BigNumberish>]): string;
+  encodeFunctionData(functionFragment: "getGameId", values: [PromiseOrValue<BytesLike>]): string;
+  encodeFunctionData(functionFragment: "getGameIdPlayedPerPlayer", values: [PromiseOrValue<string>]): string;
+  encodeFunctionData(functionFragment: "getGamePerIndex", values: [PromiseOrValue<BigNumberish>]): string;
+  encodeFunctionData(functionFragment: "getGlobalPlayerStats", values: [PromiseOrValue<string>]): string;
+  encodeFunctionData(functionFragment: "getGlobalSessionsPlayed", values?: undefined): string;
+  encodeFunctionData(functionFragment: "getLoginStatusOf", values: [PromiseOrValue<string>]): string;
+  encodeFunctionData(functionFragment: "getNumberOfGames", values?: undefined): string;
   encodeFunctionData(functionFragment: "owner", values?: undefined): string;
   encodeFunctionData(functionFragment: "paused", values?: undefined): string;
-  encodeFunctionData(
-    functionFragment: "renounceOwnership",
-    values?: undefined
-  ): string;
-  encodeFunctionData(
-    functionFragment: "setAdmin",
-    values: [PromiseOrValue<string>]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "setPaymentManager",
-    values: [PromiseOrValue<string>]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "setToken",
-    values: [PromiseOrValue<string>]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "transferOwnership",
-    values: [PromiseOrValue<string>]
-  ): string;
+  encodeFunctionData(functionFragment: "renounceOwnership", values?: undefined): string;
+  encodeFunctionData(functionFragment: "setAdmin", values: [PromiseOrValue<string>]): string;
+  encodeFunctionData(functionFragment: "setPaymentManager", values: [PromiseOrValue<string>]): string;
+  encodeFunctionData(functionFragment: "setToken", values: [PromiseOrValue<string>]): string;
+  encodeFunctionData(functionFragment: "transferOwnership", values: [PromiseOrValue<string>]): string;
   encodeFunctionData(
     functionFragment: "updatAllPlayersLogin",
     values: [PromiseOrValue<string>[], PromiseOrValue<boolean>[]]
   ): string;
 
-  decodeFunctionResult(
-    functionFragment: "createNewGame",
-    data: BytesLike
-  ): Result;
+  decodeFunctionResult(functionFragment: "createNewGame", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "gamesList", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "getGameAddress",
-    data: BytesLike
-  ): Result;
+  decodeFunctionResult(functionFragment: "getGameAddress", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "getGameId", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "getGameIdPlayedPerPlayer",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "getGamePerIndex",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "getGlobalPlayerStats",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "getGlobalSessionsPlayed",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "getLoginStatusOf",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "getNumberOfGames",
-    data: BytesLike
-  ): Result;
+  decodeFunctionResult(functionFragment: "getGameIdPlayedPerPlayer", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "getGamePerIndex", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "getGlobalPlayerStats", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "getGlobalSessionsPlayed", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "getLoginStatusOf", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "getNumberOfGames", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "owner", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "paused", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "renounceOwnership",
-    data: BytesLike
-  ): Result;
+  decodeFunctionResult(functionFragment: "renounceOwnership", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "setAdmin", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "setPaymentManager",
-    data: BytesLike
-  ): Result;
+  decodeFunctionResult(functionFragment: "setPaymentManager", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "setToken", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "transferOwnership",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "updatAllPlayersLogin",
-    data: BytesLike
-  ): Result;
+  decodeFunctionResult(functionFragment: "transferOwnership", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "updatAllPlayersLogin", data: BytesLike): Result;
 
   events: {
     "AdminAddressSet(address)": EventFragment;
@@ -242,10 +144,7 @@ export interface GameFactoryInterface extends utils.Interface {
 export interface AdminAddressSetEventObject {
   admin: string;
 }
-export type AdminAddressSetEvent = TypedEvent<
-  [string],
-  AdminAddressSetEventObject
->;
+export type AdminAddressSetEvent = TypedEvent<[string], AdminAddressSetEventObject>;
 
 export type AdminAddressSetEventFilter = TypedEventFilter<AdminAddressSetEvent>;
 
@@ -255,10 +154,7 @@ export interface NewGameCreatedEventObject {
   newGameID: BigNumber;
   newGameName: string;
 }
-export type NewGameCreatedEvent = TypedEvent<
-  [string, string, BigNumber, string],
-  NewGameCreatedEventObject
->;
+export type NewGameCreatedEvent = TypedEvent<[string, string, BigNumber, string], NewGameCreatedEventObject>;
 
 export type NewGameCreatedEventFilter = TypedEventFilter<NewGameCreatedEvent>;
 
@@ -266,13 +162,9 @@ export interface OwnershipTransferredEventObject {
   previousOwner: string;
   newOwner: string;
 }
-export type OwnershipTransferredEvent = TypedEvent<
-  [string, string],
-  OwnershipTransferredEventObject
->;
+export type OwnershipTransferredEvent = TypedEvent<[string, string], OwnershipTransferredEventObject>;
 
-export type OwnershipTransferredEventFilter =
-  TypedEventFilter<OwnershipTransferredEvent>;
+export type OwnershipTransferredEventFilter = TypedEventFilter<OwnershipTransferredEvent>;
 
 export interface PausedEventObject {
   account: string;
@@ -284,13 +176,9 @@ export type PausedEventFilter = TypedEventFilter<PausedEvent>;
 export interface PaymentManagerAddressSetEventObject {
   paymentManager: string;
 }
-export type PaymentManagerAddressSetEvent = TypedEvent<
-  [string],
-  PaymentManagerAddressSetEventObject
->;
+export type PaymentManagerAddressSetEvent = TypedEvent<[string], PaymentManagerAddressSetEventObject>;
 
-export type PaymentManagerAddressSetEventFilter =
-  TypedEventFilter<PaymentManagerAddressSetEvent>;
+export type PaymentManagerAddressSetEventFilter = TypedEventFilter<PaymentManagerAddressSetEvent>;
 
 export interface TokenSetEventObject {
   token: string;
@@ -319,13 +207,9 @@ export interface GameFactory extends BaseContract {
     toBlock?: string | number | undefined
   ): Promise<Array<TEvent>>;
 
-  listeners<TEvent extends TypedEvent>(
-    eventFilter?: TypedEventFilter<TEvent>
-  ): Array<TypedListener<TEvent>>;
+  listeners<TEvent extends TypedEvent>(eventFilter?: TypedEventFilter<TEvent>): Array<TypedListener<TEvent>>;
   listeners(eventName?: string): Array<Listener>;
-  removeAllListeners<TEvent extends TypedEvent>(
-    eventFilter: TypedEventFilter<TEvent>
-  ): this;
+  removeAllListeners<TEvent extends TypedEvent>(eventFilter: TypedEventFilter<TEvent>): this;
   removeAllListeners(eventName?: string): this;
   off: OnEvent<this>;
   on: OnEvent<this>;
@@ -338,30 +222,15 @@ export interface GameFactory extends BaseContract {
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
 
-    gamesList(
-      arg0: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
-    ): Promise<[string]>;
+    gamesList(arg0: PromiseOrValue<BigNumberish>, overrides?: CallOverrides): Promise<[string]>;
 
-    getGameAddress(
-      arg0: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
-    ): Promise<[string]>;
+    getGameAddress(arg0: PromiseOrValue<BigNumberish>, overrides?: CallOverrides): Promise<[string]>;
 
-    getGameId(
-      arg0: PromiseOrValue<BytesLike>,
-      overrides?: CallOverrides
-    ): Promise<[BigNumber]>;
+    getGameId(arg0: PromiseOrValue<BytesLike>, overrides?: CallOverrides): Promise<[BigNumber]>;
 
-    getGameIdPlayedPerPlayer(
-      _player: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<[string[]]>;
+    getGameIdPlayedPerPlayer(_player: PromiseOrValue<string>, overrides?: CallOverrides): Promise<[string[]]>;
 
-    getGamePerIndex(
-      _gameId: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
-    ): Promise<[string]>;
+    getGamePerIndex(_gameId: PromiseOrValue<BigNumberish>, overrides?: CallOverrides): Promise<[string]>;
 
     getGlobalPlayerStats(
       _player: PromiseOrValue<string>,
@@ -370,10 +239,7 @@ export interface GameFactory extends BaseContract {
 
     getGlobalSessionsPlayed(overrides?: CallOverrides): Promise<[BigNumber]>;
 
-    getLoginStatusOf(
-      _player: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<[BigNumber]>;
+    getLoginStatusOf(_player: PromiseOrValue<string>, overrides?: CallOverrides): Promise<[BigNumber]>;
 
     getNumberOfGames(overrides?: CallOverrides): Promise<[BigNumber]>;
 
@@ -381,9 +247,7 @@ export interface GameFactory extends BaseContract {
 
     paused(overrides?: CallOverrides): Promise<[boolean]>;
 
-    renounceOwnership(
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<ContractTransaction>;
+    renounceOwnership(overrides?: Overrides & { from?: PromiseOrValue<string> }): Promise<ContractTransaction>;
 
     setAdmin(
       _admin: PromiseOrValue<string>,
@@ -417,30 +281,15 @@ export interface GameFactory extends BaseContract {
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
 
-  gamesList(
-    arg0: PromiseOrValue<BigNumberish>,
-    overrides?: CallOverrides
-  ): Promise<string>;
+  gamesList(arg0: PromiseOrValue<BigNumberish>, overrides?: CallOverrides): Promise<string>;
 
-  getGameAddress(
-    arg0: PromiseOrValue<BigNumberish>,
-    overrides?: CallOverrides
-  ): Promise<string>;
+  getGameAddress(arg0: PromiseOrValue<BigNumberish>, overrides?: CallOverrides): Promise<string>;
 
-  getGameId(
-    arg0: PromiseOrValue<BytesLike>,
-    overrides?: CallOverrides
-  ): Promise<BigNumber>;
+  getGameId(arg0: PromiseOrValue<BytesLike>, overrides?: CallOverrides): Promise<BigNumber>;
 
-  getGameIdPlayedPerPlayer(
-    _player: PromiseOrValue<string>,
-    overrides?: CallOverrides
-  ): Promise<string[]>;
+  getGameIdPlayedPerPlayer(_player: PromiseOrValue<string>, overrides?: CallOverrides): Promise<string[]>;
 
-  getGamePerIndex(
-    _gameId: PromiseOrValue<BigNumberish>,
-    overrides?: CallOverrides
-  ): Promise<string>;
+  getGamePerIndex(_gameId: PromiseOrValue<BigNumberish>, overrides?: CallOverrides): Promise<string>;
 
   getGlobalPlayerStats(
     _player: PromiseOrValue<string>,
@@ -449,10 +298,7 @@ export interface GameFactory extends BaseContract {
 
   getGlobalSessionsPlayed(overrides?: CallOverrides): Promise<BigNumber>;
 
-  getLoginStatusOf(
-    _player: PromiseOrValue<string>,
-    overrides?: CallOverrides
-  ): Promise<BigNumber>;
+  getLoginStatusOf(_player: PromiseOrValue<string>, overrides?: CallOverrides): Promise<BigNumber>;
 
   getNumberOfGames(overrides?: CallOverrides): Promise<BigNumber>;
 
@@ -460,9 +306,7 @@ export interface GameFactory extends BaseContract {
 
   paused(overrides?: CallOverrides): Promise<boolean>;
 
-  renounceOwnership(
-    overrides?: Overrides & { from?: PromiseOrValue<string> }
-  ): Promise<ContractTransaction>;
+  renounceOwnership(overrides?: Overrides & { from?: PromiseOrValue<string> }): Promise<ContractTransaction>;
 
   setAdmin(
     _admin: PromiseOrValue<string>,
@@ -491,35 +335,17 @@ export interface GameFactory extends BaseContract {
   ): Promise<ContractTransaction>;
 
   callStatic: {
-    createNewGame(
-      gameName: PromiseOrValue<BytesLike>,
-      overrides?: CallOverrides
-    ): Promise<string>;
+    createNewGame(gameName: PromiseOrValue<BytesLike>, overrides?: CallOverrides): Promise<string>;
 
-    gamesList(
-      arg0: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
-    ): Promise<string>;
+    gamesList(arg0: PromiseOrValue<BigNumberish>, overrides?: CallOverrides): Promise<string>;
 
-    getGameAddress(
-      arg0: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
-    ): Promise<string>;
+    getGameAddress(arg0: PromiseOrValue<BigNumberish>, overrides?: CallOverrides): Promise<string>;
 
-    getGameId(
-      arg0: PromiseOrValue<BytesLike>,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    getGameId(arg0: PromiseOrValue<BytesLike>, overrides?: CallOverrides): Promise<BigNumber>;
 
-    getGameIdPlayedPerPlayer(
-      _player: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<string[]>;
+    getGameIdPlayedPerPlayer(_player: PromiseOrValue<string>, overrides?: CallOverrides): Promise<string[]>;
 
-    getGamePerIndex(
-      _gameId: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
-    ): Promise<string>;
+    getGamePerIndex(_gameId: PromiseOrValue<BigNumberish>, overrides?: CallOverrides): Promise<string>;
 
     getGlobalPlayerStats(
       _player: PromiseOrValue<string>,
@@ -528,10 +354,7 @@ export interface GameFactory extends BaseContract {
 
     getGlobalSessionsPlayed(overrides?: CallOverrides): Promise<BigNumber>;
 
-    getLoginStatusOf(
-      _player: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    getLoginStatusOf(_player: PromiseOrValue<string>, overrides?: CallOverrides): Promise<BigNumber>;
 
     getNumberOfGames(overrides?: CallOverrides): Promise<BigNumber>;
 
@@ -541,25 +364,13 @@ export interface GameFactory extends BaseContract {
 
     renounceOwnership(overrides?: CallOverrides): Promise<void>;
 
-    setAdmin(
-      _admin: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<void>;
+    setAdmin(_admin: PromiseOrValue<string>, overrides?: CallOverrides): Promise<void>;
 
-    setPaymentManager(
-      _paymentManager: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<void>;
+    setPaymentManager(_paymentManager: PromiseOrValue<string>, overrides?: CallOverrides): Promise<void>;
 
-    setToken(
-      _token: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<void>;
+    setToken(_token: PromiseOrValue<string>, overrides?: CallOverrides): Promise<void>;
 
-    transferOwnership(
-      newOwner: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<void>;
+    transferOwnership(newOwner: PromiseOrValue<string>, overrides?: CallOverrides): Promise<void>;
 
     updatAllPlayersLogin(
       _players: PromiseOrValue<string>[],
@@ -597,12 +408,8 @@ export interface GameFactory extends BaseContract {
     "Paused(address)"(account?: null): PausedEventFilter;
     Paused(account?: null): PausedEventFilter;
 
-    "PaymentManagerAddressSet(address)"(
-      paymentManager?: null
-    ): PaymentManagerAddressSetEventFilter;
-    PaymentManagerAddressSet(
-      paymentManager?: null
-    ): PaymentManagerAddressSetEventFilter;
+    "PaymentManagerAddressSet(address)"(paymentManager?: null): PaymentManagerAddressSetEventFilter;
+    PaymentManagerAddressSet(paymentManager?: null): PaymentManagerAddressSetEventFilter;
 
     "TokenSet(address)"(token?: null): TokenSetEventFilter;
     TokenSet(token?: null): TokenSetEventFilter;
@@ -617,42 +424,21 @@ export interface GameFactory extends BaseContract {
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
 
-    gamesList(
-      arg0: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    gamesList(arg0: PromiseOrValue<BigNumberish>, overrides?: CallOverrides): Promise<BigNumber>;
 
-    getGameAddress(
-      arg0: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    getGameAddress(arg0: PromiseOrValue<BigNumberish>, overrides?: CallOverrides): Promise<BigNumber>;
 
-    getGameId(
-      arg0: PromiseOrValue<BytesLike>,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    getGameId(arg0: PromiseOrValue<BytesLike>, overrides?: CallOverrides): Promise<BigNumber>;
 
-    getGameIdPlayedPerPlayer(
-      _player: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    getGameIdPlayedPerPlayer(_player: PromiseOrValue<string>, overrides?: CallOverrides): Promise<BigNumber>;
 
-    getGamePerIndex(
-      _gameId: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    getGamePerIndex(_gameId: PromiseOrValue<BigNumberish>, overrides?: CallOverrides): Promise<BigNumber>;
 
-    getGlobalPlayerStats(
-      _player: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    getGlobalPlayerStats(_player: PromiseOrValue<string>, overrides?: CallOverrides): Promise<BigNumber>;
 
     getGlobalSessionsPlayed(overrides?: CallOverrides): Promise<BigNumber>;
 
-    getLoginStatusOf(
-      _player: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    getLoginStatusOf(_player: PromiseOrValue<string>, overrides?: CallOverrides): Promise<BigNumber>;
 
     getNumberOfGames(overrides?: CallOverrides): Promise<BigNumber>;
 
@@ -660,9 +446,7 @@ export interface GameFactory extends BaseContract {
 
     paused(overrides?: CallOverrides): Promise<BigNumber>;
 
-    renounceOwnership(
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<BigNumber>;
+    renounceOwnership(overrides?: Overrides & { from?: PromiseOrValue<string> }): Promise<BigNumber>;
 
     setAdmin(
       _admin: PromiseOrValue<string>,
@@ -697,44 +481,21 @@ export interface GameFactory extends BaseContract {
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
 
-    gamesList(
-      arg0: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    gamesList(arg0: PromiseOrValue<BigNumberish>, overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    getGameAddress(
-      arg0: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    getGameAddress(arg0: PromiseOrValue<BigNumberish>, overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    getGameId(
-      arg0: PromiseOrValue<BytesLike>,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    getGameId(arg0: PromiseOrValue<BytesLike>, overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    getGameIdPlayedPerPlayer(
-      _player: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    getGameIdPlayedPerPlayer(_player: PromiseOrValue<string>, overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    getGamePerIndex(
-      _gameId: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    getGamePerIndex(_gameId: PromiseOrValue<BigNumberish>, overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    getGlobalPlayerStats(
-      _player: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    getGlobalPlayerStats(_player: PromiseOrValue<string>, overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    getGlobalSessionsPlayed(
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    getGlobalSessionsPlayed(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    getLoginStatusOf(
-      _player: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    getLoginStatusOf(_player: PromiseOrValue<string>, overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     getNumberOfGames(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
@@ -742,9 +503,7 @@ export interface GameFactory extends BaseContract {
 
     paused(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    renounceOwnership(
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<PopulatedTransaction>;
+    renounceOwnership(overrides?: Overrides & { from?: PromiseOrValue<string> }): Promise<PopulatedTransaction>;
 
     setAdmin(
       _admin: PromiseOrValue<string>,

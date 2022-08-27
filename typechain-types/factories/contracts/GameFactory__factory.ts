@@ -4,10 +4,7 @@
 import { Signer, utils, Contract, ContractFactory, Overrides } from "ethers";
 import type { Provider, TransactionRequest } from "@ethersproject/providers";
 import type { PromiseOrValue } from "../../common";
-import type {
-  GameFactory,
-  GameFactoryInterface,
-} from "../../contracts/GameFactory";
+import type { GameFactory, GameFactoryInterface } from "../../contracts/GameFactory";
 
 const _abi = [
   {
@@ -447,9 +444,7 @@ type GameFactoryConstructorParams =
   | [linkLibraryAddresses: GameFactoryLibraryAddresses, signer?: Signer]
   | ConstructorParameters<typeof ContractFactory>;
 
-const isSuperArgs = (
-  xs: GameFactoryConstructorParams
-): xs is ConstructorParameters<typeof ContractFactory> => {
+const isSuperArgs = (xs: GameFactoryConstructorParams): xs is ConstructorParameters<typeof ContractFactory> => {
   return (
     typeof xs[0] === "string" ||
     (Array.isArray as (arg: any) => arg is readonly any[])(xs[0]) ||
@@ -463,39 +458,25 @@ export class GameFactory__factory extends ContractFactory {
       super(...args);
     } else {
       const [linkLibraryAddresses, signer] = args;
-      super(
-        _abi,
-        GameFactory__factory.linkBytecode(linkLibraryAddresses),
-        signer
-      );
+      super(_abi, GameFactory__factory.linkBytecode(linkLibraryAddresses), signer);
     }
   }
 
-  static linkBytecode(
-    linkLibraryAddresses: GameFactoryLibraryAddresses
-  ): string {
+  static linkBytecode(linkLibraryAddresses: GameFactoryLibraryAddresses): string {
     let linkedBytecode = _bytecode;
 
     linkedBytecode = linkedBytecode.replace(
       new RegExp("__\\$4d62a5ae34e2d511493851fdbbce5d22f7\\$__", "g"),
-      linkLibraryAddresses[
-        "contracts/libraries/RewardStructure.sol:RewardStructure"
-      ]
-        .replace(/^0x/, "")
-        .toLowerCase()
+      linkLibraryAddresses["contracts/libraries/RewardStructure.sol:RewardStructure"].replace(/^0x/, "").toLowerCase()
     );
 
     return linkedBytecode;
   }
 
-  override deploy(
-    overrides?: Overrides & { from?: PromiseOrValue<string> }
-  ): Promise<GameFactory> {
+  override deploy(overrides?: Overrides & { from?: PromiseOrValue<string> }): Promise<GameFactory> {
     return super.deploy(overrides || {}) as Promise<GameFactory>;
   }
-  override getDeployTransaction(
-    overrides?: Overrides & { from?: PromiseOrValue<string> }
-  ): TransactionRequest {
+  override getDeployTransaction(overrides?: Overrides & { from?: PromiseOrValue<string> }): TransactionRequest {
     return super.getDeployTransaction(overrides || {});
   }
   override attach(address: string): GameFactory {
@@ -510,10 +491,7 @@ export class GameFactory__factory extends ContractFactory {
   static createInterface(): GameFactoryInterface {
     return new utils.Interface(_abi) as GameFactoryInterface;
   }
-  static connect(
-    address: string,
-    signerOrProvider: Signer | Provider
-  ): GameFactory {
+  static connect(address: string, signerOrProvider: Signer | Provider): GameFactory {
     return new Contract(address, _abi, signerOrProvider) as GameFactory;
   }
 }

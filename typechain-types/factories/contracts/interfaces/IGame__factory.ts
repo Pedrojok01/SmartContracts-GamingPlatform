@@ -4,10 +4,7 @@
 
 import { Contract, Signer, utils } from "ethers";
 import type { Provider } from "@ethersproject/providers";
-import type {
-  IGame,
-  IGameInterface,
-} from "../../../contracts/interfaces/IGame";
+import type { IGame, IGameInterface } from "../../../contracts/interfaces/IGame";
 
 const _abi = [
   {

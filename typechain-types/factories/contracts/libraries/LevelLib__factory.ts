@@ -4,10 +4,7 @@
 import { Signer, utils, Contract, ContractFactory, Overrides } from "ethers";
 import type { Provider, TransactionRequest } from "@ethersproject/providers";
 import type { PromiseOrValue } from "../../../common";
-import type {
-  LevelLib,
-  LevelLibInterface,
-} from "../../../contracts/libraries/LevelLib";
+import type { LevelLib, LevelLibInterface } from "../../../contracts/libraries/LevelLib";
 
 const _abi = [
   {
@@ -173,13 +170,10 @@ const _abi = [
 const _bytecode =
   "0x61032b61003a600b82828239805160001a60731461002d57634e487b7160e01b600052600060045260246000fd5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600436106100c85760003560e01c8063b6a1620311610080578063c1636bd811610065578063c1636bd814610142578063d28a7bcd1461014a578063dabce5e11461015d57600080fd5b8063b6a1620314610132578063c0d37d0e1461013a57600080fd5b8063a38e639c116100b1578063a38e639c146100f4578063a911fb1514610107578063b10606141461010f57600080fd5b8063444df664146100cd578063592b58d6146100ec575b600080fd5b6100d5600581565b60405160ff90911681526020015b60405180910390f35b6100d5600081565b6100d5610102366004610275565b610165565b6100d5600181565b61012261011d36600461029f565b610235565b60405190151581526020016100e3565b6100d5600381565b6100d5600281565b6100d5600681565b6101226101583660046102d2565b610256565b6100d5600481565b60006103e882101561017957506000919050565b6103e8821015801561018c575061271082105b1561019957506001919050565b61271082101580156101ad5750620186a082105b156101ba57506002919050565b620186a082101580156101cf5750620f424082105b156101dc57506003919050565b620f424082101580156101f157506298968082105b156101fe57506004919050565b62989680821015801561021457506305f5e10082105b1561022157506005919050565b6305f5e1008210610230575060065b919050565b60008160ff168360ff16101561024c57600061024f565b60015b9392505050565b60008160ff1661026584610165565b60ff16101561024c57600061024f565b60006020828403121561028757600080fd5b5035919050565b803560ff8116811461023057600080fd5b600080604083850312156102b257600080fd5b6102bb8361028e565b91506102c96020840161028e565b90509250929050565b600080604083850312156102e557600080fd5b823591506102c96020840161028e56fea26469706673582212204624926b652cbbc124df18ea50efcfe42b22f0426f03f4a27e6857d4135f8d8c64736f6c63430008100033";
 
-type LevelLibConstructorParams =
-  | [signer?: Signer]
-  | ConstructorParameters<typeof ContractFactory>;
+type LevelLibConstructorParams = [signer?: Signer] | ConstructorParameters<typeof ContractFactory>;
 
-const isSuperArgs = (
-  xs: LevelLibConstructorParams
-): xs is ConstructorParameters<typeof ContractFactory> => xs.length > 1;
+const isSuperArgs = (xs: LevelLibConstructorParams): xs is ConstructorParameters<typeof ContractFactory> =>
+  xs.length > 1;
 
 export class LevelLib__factory extends ContractFactory {
   constructor(...args: LevelLibConstructorParams) {
@@ -190,14 +184,10 @@ export class LevelLib__factory extends ContractFactory {
     }
   }
 
-  override deploy(
-    overrides?: Overrides & { from?: PromiseOrValue<string> }
-  ): Promise<LevelLib> {
+  override deploy(overrides?: Overrides & { from?: PromiseOrValue<string> }): Promise<LevelLib> {
     return super.deploy(overrides || {}) as Promise<LevelLib>;
   }
-  override getDeployTransaction(
-    overrides?: Overrides & { from?: PromiseOrValue<string> }
-  ): TransactionRequest {
+  override getDeployTransaction(overrides?: Overrides & { from?: PromiseOrValue<string> }): TransactionRequest {
     return super.getDeployTransaction(overrides || {});
   }
   override attach(address: string): LevelLib {
@@ -212,10 +202,7 @@ export class LevelLib__factory extends ContractFactory {
   static createInterface(): LevelLibInterface {
     return new utils.Interface(_abi) as LevelLibInterface;
   }
-  static connect(
-    address: string,
-    signerOrProvider: Signer | Provider
-  ): LevelLib {
+  static connect(address: string, signerOrProvider: Signer | Provider): LevelLib {
     return new Contract(address, _abi, signerOrProvider) as LevelLib;
   }
 }

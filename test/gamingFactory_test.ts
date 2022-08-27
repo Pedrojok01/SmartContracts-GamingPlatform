@@ -89,7 +89,7 @@ describe("GameFactory", function () {
       const tx = await gameFactory.createNewGame(name1Bytes32);
       const receipt = await tx.wait();
       const event = receipt.events!.find((event) => event.event === "NewGameCreated");
-      const [_owner, newGameAddress, newGameID, newGameName]:any = event!.args;
+      const [_owner, newGameAddress, newGameID, newGameName]: any = event!.args;
 
       const gameAddress = await gameFactory.getGamePerIndex(newGameID);
       expect(gameAddress).to.equal(newGameAddress);
@@ -153,14 +153,14 @@ describe("GameFactory", function () {
     expect(stat1Player1.sessionsPlayed).to.equal(114 + 14); // (session played when added + update)
     expect(stat1Player1.rankingScore).to.equal(8543); // (8543 > 1543)
     expect(stat1Player1.bestScore).to.equal(10250); // (10250 > 8543)
-    expect(stat1Player1.claimable).to.equal((BN_L.add(BN_S)).toString()); // (L3P when added + update)
+    expect(stat1Player1.claimable).to.equal(BN_L.add(BN_S).toString()); // (L3P when added + update)
 
     const stat1Player2 = await game1.getPlayerStats(addr2.address);
     expect(stat1Player2.xp).to.equal(1100 + 146); // (xp when added + update)
     expect(stat1Player2.sessionsPlayed).to.equal(88 + 6); // (session played when added + update)
     expect(stat1Player2.rankingScore).to.equal(6746); // (6746 > 6243)
     expect(stat1Player2.bestScore).to.equal(8543); // (8543 > 6746)
-    expect(stat1Player2.claimable).to.equal((BN_M.add(BN_S)).toString()); // (L3P when added + update)
+    expect(stat1Player2.claimable).to.equal(BN_M.add(BN_S).toString()); // (L3P when added + update)
 
     // Check stats per players for game 2
     const stat2Player1 = await game2.getPlayerStats(addr1.address);
@@ -168,7 +168,7 @@ describe("GameFactory", function () {
     expect(stat2Player1.sessionsPlayed).to.equal(124 + 14); // (session played when added + update)
     expect(stat2Player1.rankingScore).to.equal(12543); // (12543 > 8543)
     expect(stat2Player1.bestScore).to.equal(21437); // (21437 > 8543)
-    expect(stat2Player1.claimable).to.equal((BN_L.add(BN_S)).toString()); // (L3P when added + update)
+    expect(stat2Player1.claimable).to.equal(BN_L.add(BN_S).toString()); // (L3P when added + update)
 
     const stat2Player2 = await game2.getPlayerStats(addr2.address);
     expect(stat2Player2.xp).to.equal(1200); // didn't play
@@ -182,7 +182,7 @@ describe("GameFactory", function () {
     expect(statPlayer3.sessionsPlayed).to.equal(54 + 6); // (session played when added + update)
     expect(statPlayer3.rankingScore).to.equal(10243); // (10243 > 6435)
     expect(statPlayer3.bestScore).to.equal(10243); // (10243 > 9864)
-    expect(statPlayer3.claimable).to.equal((BN_S.add(BN_S)).toString()); // (L3P when added + update)
+    expect(statPlayer3.claimable).to.equal(BN_S.add(BN_S).toString()); // (L3P when added + update)
   });
 
   it("Should be possible to update then get a player login status", async function () {

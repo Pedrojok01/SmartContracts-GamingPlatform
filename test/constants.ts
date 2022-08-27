@@ -18,7 +18,7 @@ export const name2Bytes32 = ethers.utils.formatBytes32String("Doom");
 export const name3Bytes32 = ethers.utils.formatBytes32String("Fzero");
 
 export const getAddressFromEvent = (receipt: any) => {
-  const event = receipt.events.find((event: { event: string; }) => event.event === "NewGameCreated");
+  const event = receipt.events.find((event: { event: string }) => event.event === "NewGameCreated");
   const [owner, newGameAddress, newGameID, newGameName] = event.args;
   return newGameAddress;
 };

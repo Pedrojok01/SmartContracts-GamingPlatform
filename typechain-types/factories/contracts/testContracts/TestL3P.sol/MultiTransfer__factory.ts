@@ -340,10 +340,7 @@ export class MultiTransfer__factory {
   static createInterface(): MultiTransferInterface {
     return new utils.Interface(_abi) as MultiTransferInterface;
   }
-  static connect(
-    address: string,
-    signerOrProvider: Signer | Provider
-  ): MultiTransfer {
+  static connect(address: string, signerOrProvider: Signer | Provider): MultiTransfer {
     return new Contract(address, _abi, signerOrProvider) as MultiTransfer;
   }
 }

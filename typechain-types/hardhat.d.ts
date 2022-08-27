@@ -3,10 +3,7 @@
 /* eslint-disable */
 
 import { ethers } from "ethers";
-import {
-  FactoryOptions,
-  HardhatEthersHelpers as HardhatEthersHelpersBase,
-} from "@nomiclabs/hardhat-ethers/types";
+import { FactoryOptions, HardhatEthersHelpers as HardhatEthersHelpersBase } from "@nomiclabs/hardhat-ethers/types";
 
 import * as Contracts from ".";
 
@@ -69,91 +66,28 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.TestL3P__factory>;
 
-    getContractAt(
-      name: "Ownable",
-      address: string,
-      signer?: ethers.Signer
-    ): Promise<Contracts.Ownable>;
-    getContractAt(
-      name: "Pausable",
-      address: string,
-      signer?: ethers.Signer
-    ): Promise<Contracts.Pausable>;
-    getContractAt(
-      name: "ERC20",
-      address: string,
-      signer?: ethers.Signer
-    ): Promise<Contracts.ERC20>;
-    getContractAt(
-      name: "IERC20Permit",
-      address: string,
-      signer?: ethers.Signer
-    ): Promise<Contracts.IERC20Permit>;
-    getContractAt(
-      name: "IERC20Metadata",
-      address: string,
-      signer?: ethers.Signer
-    ): Promise<Contracts.IERC20Metadata>;
-    getContractAt(
-      name: "IERC20",
-      address: string,
-      signer?: ethers.Signer
-    ): Promise<Contracts.IERC20>;
-    getContractAt(
-      name: "Game",
-      address: string,
-      signer?: ethers.Signer
-    ): Promise<Contracts.Game>;
-    getContractAt(
-      name: "GameFactory",
-      address: string,
-      signer?: ethers.Signer
-    ): Promise<Contracts.GameFactory>;
-    getContractAt(
-      name: "IGame",
-      address: string,
-      signer?: ethers.Signer
-    ): Promise<Contracts.IGame>;
-    getContractAt(
-      name: "LevelLib",
-      address: string,
-      signer?: ethers.Signer
-    ): Promise<Contracts.LevelLib>;
-    getContractAt(
-      name: "RewardStructure",
-      address: string,
-      signer?: ethers.Signer
-    ): Promise<Contracts.RewardStructure>;
-    getContractAt(
-      name: "PaymentManager",
-      address: string,
-      signer?: ethers.Signer
-    ): Promise<Contracts.PaymentManager>;
-    getContractAt(
-      name: "MultiTransfer",
-      address: string,
-      signer?: ethers.Signer
-    ): Promise<Contracts.MultiTransfer>;
-    getContractAt(
-      name: "TestL3P",
-      address: string,
-      signer?: ethers.Signer
-    ): Promise<Contracts.TestL3P>;
+    getContractAt(name: "Ownable", address: string, signer?: ethers.Signer): Promise<Contracts.Ownable>;
+    getContractAt(name: "Pausable", address: string, signer?: ethers.Signer): Promise<Contracts.Pausable>;
+    getContractAt(name: "ERC20", address: string, signer?: ethers.Signer): Promise<Contracts.ERC20>;
+    getContractAt(name: "IERC20Permit", address: string, signer?: ethers.Signer): Promise<Contracts.IERC20Permit>;
+    getContractAt(name: "IERC20Metadata", address: string, signer?: ethers.Signer): Promise<Contracts.IERC20Metadata>;
+    getContractAt(name: "IERC20", address: string, signer?: ethers.Signer): Promise<Contracts.IERC20>;
+    getContractAt(name: "Game", address: string, signer?: ethers.Signer): Promise<Contracts.Game>;
+    getContractAt(name: "GameFactory", address: string, signer?: ethers.Signer): Promise<Contracts.GameFactory>;
+    getContractAt(name: "IGame", address: string, signer?: ethers.Signer): Promise<Contracts.IGame>;
+    getContractAt(name: "LevelLib", address: string, signer?: ethers.Signer): Promise<Contracts.LevelLib>;
+    getContractAt(name: "RewardStructure", address: string, signer?: ethers.Signer): Promise<Contracts.RewardStructure>;
+    getContractAt(name: "PaymentManager", address: string, signer?: ethers.Signer): Promise<Contracts.PaymentManager>;
+    getContractAt(name: "MultiTransfer", address: string, signer?: ethers.Signer): Promise<Contracts.MultiTransfer>;
+    getContractAt(name: "TestL3P", address: string, signer?: ethers.Signer): Promise<Contracts.TestL3P>;
 
     // default types
-    getContractFactory(
-      name: string,
-      signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<ethers.ContractFactory>;
+    getContractFactory(name: string, signerOrOptions?: ethers.Signer | FactoryOptions): Promise<ethers.ContractFactory>;
     getContractFactory(
       abi: any[],
       bytecode: ethers.utils.BytesLike,
       signer?: ethers.Signer
     ): Promise<ethers.ContractFactory>;
-    getContractAt(
-      nameOrAbi: string | any[],
-      address: string,
-      signer?: ethers.Signer
-    ): Promise<ethers.Contract>;
+    getContractAt(nameOrAbi: string | any[], address: string, signer?: ethers.Signer): Promise<ethers.Contract>;
   }
 }
