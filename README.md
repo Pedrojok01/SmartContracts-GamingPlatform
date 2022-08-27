@@ -1,61 +1,81 @@
-# ToDo list:
+<div align="center">
+<h1><strong> Web3 Gaming Platform </strong></h1>
 
-## Features to be added
+[![Stargazers](https://img.shields.io/github/stars/Pedrojok01/Web3-Gaming-Platform)](https://github.com/Pedrojok01/Web3-Gaming-Platform/stargazers)
+[![Issues](https://img.shields.io/github/issues/Pedrojok01/Web3-Gaming-Platform)](https://github.com/Pedrojok01/Web3-Gaming-Platform/issues)
+[![MIT License](https://img.shields.io/github/license/Pedrojok01/Web3-Gaming-Platform)](https://github.com/Pedrojok01/Web3-Gaming-Platform/blob/main/License)
+[![LinkedIn](https://img.shields.io/badge/-LinkedIn-black)](https://www.linkedin.com/in/pierre-e/)
 
-- [x] Factory contract
-- [x] Game contract
-- [x] Handle player stats
-  - [x] update
-  - [x] reset
-- [x] Handle Login session
-- [x] Pay Manager
-- [x] Weekly tournament reward + distrib
-- [ ] L3P fee for factory deployment?
-- [ ] Decide NFT attributes
-- [ ] Decide Piggy Bank / Friend & Family
-- [ ] Decide high price tournament based on NFT / L3P balance?
-- [ ] Session Manager contract for Asynchronous PvP
+</div>
 
-## Improvements to be done
+## Description
 
-- [x] Fix RewardStructure.sol
-- [ ] Improve storage for gas saving
-- [ ] Add getter functions
-- [x] Unit tests (NFT tests missing)
+Smart-contracts to build a whole casual games platform, including a factory allowing anyone to create new game. Many features could still be added, however this is a good and well-tested starting point.
 
-# Advanced Sample Hardhat Project
+Try it yourself: [https://web3-boilerplate.netlify.app/](https://web3-boilerplate.netlify.app/)
 
-```shell
-npx hardhat accounts
-npx hardhat compile
-npx hardhat clean
-npx hardhat test
-npx hardhat node
-npx hardhat help
-REPORT_GAS=true npx hardhat test
-npx hardhat coverage
-npx hardhat run scripts/deploy.js
-node scripts/deploy.js
-npx eslint '**/*.js'
-npx eslint '**/*.js' --fix
-npx prettier '**/*.{json,sol,md}' --check
-npx prettier '**/*.{json,sol,md}' --write
-npx solhint 'contracts/**/*.sol'
-npx solhint 'contracts/**/*.sol' --fix
+## Disclaimer
+
+Use at your own risk!
+
+## Built With
+
+- [![solidity]][solidity-url]
+- [![typescript]][typescript-url]
+- [![AntDesign]][antdesign-url]
+- [![web3react]][web3react-url]
+- [![prettier]][prettier-url]
+- [![ESLint]][eslint-url]
+
+## Installation
+
+### Make sure you have the following ready:
+
+- [node.js](https://nodejs.org/) installed (developped on LTS v16.16.0)
+- [typescript](https://www.typescriptlang.org/) installed (developped on v4.7.4)
+- [yarn](https://yarnpkg.com/) installed
+- [MetaMask](https://metamask.io/) (or any web3 compatible wallet) installed in your browser
+
+### Once your config is ready, create a new repo, open your favorite code editor, and clone the repo with the following cmd:
+
+```
+git clone https://github.com/Pedrojok01/Web3-Gaming-Platform.git .
 ```
 
-# Etherscan verification
+### Install all package dependancies by running:
 
-To try out Etherscan verification, you first need to deploy a contract to an Ethereum network that's supported by Etherscan, such as Ropsten.
-
-In this project, copy the .env.example file to a file named .env, and then edit it to fill in the details. Enter your Etherscan API key, your Ropsten node URL (eg from Alchemy), and the private key of the account which will send the deployment transaction. With a valid .env file in place, first deploy your contract:
-
-```shell
-hardhat run --network ropsten scripts/deploy.js
+```
+yarn install
 ```
 
-Then, copy the deployment address and paste it in to replace `DEPLOYED_CONTRACT_ADDRESS` in this command:
+### start the web3-boilerplate:
 
-```shell
-npx hardhat verify --network ropsten DEPLOYED_CONTRACT_ADDRESS "Hello, Hardhat!"
 ```
+yarn start
+```
+
+## Features:
+
+- [x] Web3 Wallet (Metamask / Wallet connect / Coinbase)
+- [x] Chain selector
+- [ ] Hooks to query user's Native Balance / Token Balances
+- [ ] Hook to query user's NFTs
+
+<br></br>
+
+# Enjoy!!!
+
+### ⭐️ ... and don't forget to leave a star if you like it! ⭐️
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+<!-- MARKDOWN LINKS & IMAGES -->
+
+[solidity]: https://img.shields.io/badge/Solidity-35495E?style=for-the-badge&logo=solidity&logoColor=4FC08D
+[solidity-url]: https://soliditylang.org/
+[typescript]: https://img.shields.io/badge/typescript_v4.7.4-375BD2?style=for-the-badge&logo=typescript&logoColor=61DAFB
+[typescript-url]: https://www.typescriptlang.org/
+[prettier]: https://img.shields.io/badge/Prettier-360D3A?style=for-the-badge&logo=Prettier&logoColor=61DAFB
+[prettier-url]: https://prettier.io/
+[eslint]: https://img.shields.io/badge/ESLint-4B32C3?style=for-the-badge&logo=ESLint&logoColor=61DAFB
+[eslint-url]: https://eslint.org/
