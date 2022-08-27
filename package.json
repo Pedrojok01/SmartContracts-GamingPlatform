@@ -18,7 +18,7 @@
     "prettier": "run-s prettier:js prettier:sol",
     "compile": "hardhat compile --show-stack-traces",
     "test": "hardhat test --show-stack-traces",
-    "deploy": "hardhat run scripts/deploy.js",
+    "deploy": "hardhat run --network mumbai scripts/deploy.ts",
     "flatten": "hardhat flatten-all --show-stack-traces",
     "size": "hardhat size-contracts",
     "doc": "hardhat docgen",

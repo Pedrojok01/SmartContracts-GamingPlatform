@@ -1,9 +1,8 @@
-
 import dotenv from "dotenv";
 dotenv.config();
 import { HardhatUserConfig } from "hardhat/config";
 import "@nomicfoundation/hardhat-chai-matchers";
-import '@typechain/hardhat'
+import "@typechain/hardhat";
 import "@nomiclabs/hardhat-etherscan";
 import "@nomiclabs/hardhat-ethers";
 import "@nomicfoundation/hardhat-toolbox";
@@ -78,7 +77,7 @@ module.exports = {
     "output-structure": "single",
   },
   etherscan: {
-    apiKey: process.env.ETHERSCAN_API_KEY,
+    apiKey: process.env.POLYGONSCAN_API_KEY,
   },
   paths: {
     sources: "./contracts",

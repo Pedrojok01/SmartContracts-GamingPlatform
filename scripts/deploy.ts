@@ -56,11 +56,20 @@ async function main() {
   /* WAITING:
    ***********/
   await gameFactory.deployTransaction.wait(7);
+  await paymentManager.deployTransaction.wait(7);
 
   /* VERIFICATION:
    ****************/
   await hre.run("verify:verify", {
+    address: rewardStructure.address,
+    constructorArguments: [],
+  });
+  await hre.run("verify:verify", {
     address: gameFactory.address,
+    constructorArguments: [],
+  });
+  await hre.run("verify:verify", {
+    address: levelLib.address,
     constructorArguments: [],
   });
   await hre.run("verify:verify", {

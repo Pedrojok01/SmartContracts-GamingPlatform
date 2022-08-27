@@ -458,7 +458,6 @@ const isSuperArgs = (
 };
 
 export class GameFactory__factory extends ContractFactory {
-  [x: string]: any;
   constructor(...args: GameFactoryConstructorParams) {
     if (isSuperArgs(args)) {
       super(...args);
