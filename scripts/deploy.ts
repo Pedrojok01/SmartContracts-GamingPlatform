@@ -2,7 +2,7 @@ require("dotenv").config();
 import hre, { ethers } from "hardhat";
 import fs from "fs";
 
-const TEST_L3P: string = "0xE413Bfbc963fdB56Fe12A2501aa58cD4913553ef";
+const TEST_TOKEN: string = "0xE413Bfbc963fdB56Fe12A2501aa58cD4913553ef";
 const PAYMENT_ADDRESS: string = "0xF0eEaAB7153Ff42849aCb0E817efEe09fb078C1b";
 
 async function main() {
@@ -27,7 +27,7 @@ async function main() {
       LevelLib: levelLib.address,
     },
   });
-  const paymentManager = await PaymentManager.deploy(TEST_L3P, PAYMENT_ADDRESS, gameFactory.address);
+  const paymentManager = await PaymentManager.deploy(TEST_TOKEN, PAYMENT_ADDRESS, gameFactory.address);
   await paymentManager.deployed();
 
   console.log("\n");
@@ -74,7 +74,7 @@ async function main() {
   });
   await hre.run("verify:verify", {
     address: paymentManager.address,
-    constructorArguments: [TEST_L3P, PAYMENT_ADDRESS, gameFactory.address],
+    constructorArguments: [TEST_TOKEN, PAYMENT_ADDRESS, gameFactory.address],
   });
 }
 

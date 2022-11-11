@@ -4,7 +4,10 @@
 
 import { Contract, Signer, utils } from "ethers";
 import type { Provider } from "@ethersproject/providers";
-import type { IERC20, IERC20Interface } from "../../../../../@openzeppelin/contracts/token/ERC20/IERC20";
+import type {
+  IERC20,
+  IERC20Interface,
+} from "../../../../../@openzeppelin/contracts/token/ERC20/IERC20";
 
 const _abi = [
   {

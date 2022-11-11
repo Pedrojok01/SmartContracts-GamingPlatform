@@ -92,7 +92,10 @@ export class IERC20Permit__factory {
   static createInterface(): IERC20PermitInterface {
     return new utils.Interface(_abi) as IERC20PermitInterface;
   }
-  static connect(address: string, signerOrProvider: Signer | Provider): IERC20Permit {
+  static connect(
+    address: string,
+    signerOrProvider: Signer | Provider
+  ): IERC20Permit {
     return new Contract(address, _abi, signerOrProvider) as IERC20Permit;
   }
 }

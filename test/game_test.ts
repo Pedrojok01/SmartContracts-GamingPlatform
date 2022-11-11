@@ -4,7 +4,7 @@ import { ethers } from "hardhat";
 import { BN_S, BN_M, BN_L, BN_XL, name1Bytes32, infiniteApproval, name2Bytes32 } from "./constants";
 
 describe("GameFactory", function () {
-  let TestL3P,
+  let TestToken,
     testL3P: Contract,
     GameFactory,
     gameFactory: Contract,
@@ -24,8 +24,8 @@ describe("GameFactory", function () {
   before(async function () {
     [deployer, addr1, addr2, addr3, addr4, addr5] = await ethers.getSigners();
 
-    TestL3P = await ethers.getContractFactory("TestL3P");
-    testL3P = await TestL3P.deploy();
+    TestToken = await ethers.getContractFactory("TestToken");
+    testL3P = await TestToken.deploy();
     await testL3P.deployed();
 
     RewardStructure = await ethers.getContractFactory("RewardStructure");

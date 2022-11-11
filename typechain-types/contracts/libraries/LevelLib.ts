@@ -13,7 +13,13 @@ import type {
 } from "ethers";
 import type { FunctionFragment, Result } from "@ethersproject/abi";
 import type { Listener, Provider } from "@ethersproject/providers";
-import type { TypedEventFilter, TypedEvent, TypedListener, OnEvent, PromiseOrValue } from "../../common";
+import type {
+  TypedEventFilter,
+  TypedEvent,
+  TypedListener,
+  OnEvent,
+  PromiseOrValue,
+} from "../../common";
 
 export interface LevelLibInterface extends utils.Interface {
   functions: {
@@ -44,13 +50,25 @@ export interface LevelLibInterface extends utils.Interface {
   ): FunctionFragment;
 
   encodeFunctionData(functionFragment: "BEGINNER", values?: undefined): string;
-  encodeFunctionData(functionFragment: "GRAN_MASTER", values?: undefined): string;
-  encodeFunctionData(functionFragment: "INTERMEDIATE", values?: undefined): string;
-  encodeFunctionData(functionFragment: "JUGGERNAUT", values?: undefined): string;
+  encodeFunctionData(
+    functionFragment: "GRAN_MASTER",
+    values?: undefined
+  ): string;
+  encodeFunctionData(
+    functionFragment: "INTERMEDIATE",
+    values?: undefined
+  ): string;
+  encodeFunctionData(
+    functionFragment: "JUGGERNAUT",
+    values?: undefined
+  ): string;
   encodeFunctionData(functionFragment: "NEWBIE", values?: undefined): string;
   encodeFunctionData(functionFragment: "UADVANCED", values?: undefined): string;
   encodeFunctionData(functionFragment: "ULTIMATE", values?: undefined): string;
-  encodeFunctionData(functionFragment: "getLevelFromXp", values: [PromiseOrValue<BigNumberish>]): string;
+  encodeFunctionData(
+    functionFragment: "getLevelFromXp",
+    values: [PromiseOrValue<BigNumberish>]
+  ): string;
   encodeFunctionData(
     functionFragment: "isUnlockedPerLvl",
     values: [PromiseOrValue<BigNumberish>, PromiseOrValue<BigNumberish>]
@@ -61,15 +79,30 @@ export interface LevelLibInterface extends utils.Interface {
   ): string;
 
   decodeFunctionResult(functionFragment: "BEGINNER", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "GRAN_MASTER", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "INTERMEDIATE", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "GRAN_MASTER",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "INTERMEDIATE",
+    data: BytesLike
+  ): Result;
   decodeFunctionResult(functionFragment: "JUGGERNAUT", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "NEWBIE", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "UADVANCED", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "ULTIMATE", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "getLevelFromXp", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "isUnlockedPerLvl", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "isUnlockedPerXp", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "getLevelFromXp",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "isUnlockedPerLvl",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "isUnlockedPerXp",
+    data: BytesLike
+  ): Result;
 
   events: {};
 }
@@ -87,9 +120,13 @@ export interface LevelLib extends BaseContract {
     toBlock?: string | number | undefined
   ): Promise<Array<TEvent>>;
 
-  listeners<TEvent extends TypedEvent>(eventFilter?: TypedEventFilter<TEvent>): Array<TypedListener<TEvent>>;
+  listeners<TEvent extends TypedEvent>(
+    eventFilter?: TypedEventFilter<TEvent>
+  ): Array<TypedListener<TEvent>>;
   listeners(eventName?: string): Array<Listener>;
-  removeAllListeners<TEvent extends TypedEvent>(eventFilter: TypedEventFilter<TEvent>): this;
+  removeAllListeners<TEvent extends TypedEvent>(
+    eventFilter: TypedEventFilter<TEvent>
+  ): this;
   removeAllListeners(eventName?: string): this;
   off: OnEvent<this>;
   on: OnEvent<this>;
@@ -111,7 +148,10 @@ export interface LevelLib extends BaseContract {
 
     ULTIMATE(overrides?: CallOverrides): Promise<[number]>;
 
-    getLevelFromXp(_xp: PromiseOrValue<BigNumberish>, overrides?: CallOverrides): Promise<[number] & { level: number }>;
+    getLevelFromXp(
+      _xp: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<[number] & { level: number }>;
 
     isUnlockedPerLvl(
       _level: PromiseOrValue<BigNumberish>,
@@ -140,7 +180,10 @@ export interface LevelLib extends BaseContract {
 
   ULTIMATE(overrides?: CallOverrides): Promise<number>;
 
-  getLevelFromXp(_xp: PromiseOrValue<BigNumberish>, overrides?: CallOverrides): Promise<number>;
+  getLevelFromXp(
+    _xp: PromiseOrValue<BigNumberish>,
+    overrides?: CallOverrides
+  ): Promise<number>;
 
   isUnlockedPerLvl(
     _level: PromiseOrValue<BigNumberish>,
@@ -169,7 +212,10 @@ export interface LevelLib extends BaseContract {
 
     ULTIMATE(overrides?: CallOverrides): Promise<number>;
 
-    getLevelFromXp(_xp: PromiseOrValue<BigNumberish>, overrides?: CallOverrides): Promise<number>;
+    getLevelFromXp(
+      _xp: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<number>;
 
     isUnlockedPerLvl(
       _level: PromiseOrValue<BigNumberish>,
@@ -201,7 +247,10 @@ export interface LevelLib extends BaseContract {
 
     ULTIMATE(overrides?: CallOverrides): Promise<BigNumber>;
 
-    getLevelFromXp(_xp: PromiseOrValue<BigNumberish>, overrides?: CallOverrides): Promise<BigNumber>;
+    getLevelFromXp(
+      _xp: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
 
     isUnlockedPerLvl(
       _level: PromiseOrValue<BigNumberish>,
@@ -231,7 +280,10 @@ export interface LevelLib extends BaseContract {
 
     ULTIMATE(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    getLevelFromXp(_xp: PromiseOrValue<BigNumberish>, overrides?: CallOverrides): Promise<PopulatedTransaction>;
+    getLevelFromXp(
+      _xp: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
 
     isUnlockedPerLvl(
       _level: PromiseOrValue<BigNumberish>,

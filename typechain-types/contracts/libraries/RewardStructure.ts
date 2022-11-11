@@ -13,7 +13,13 @@ import type {
 } from "ethers";
 import type { FunctionFragment, Result } from "@ethersproject/abi";
 import type { Listener, Provider } from "@ethersproject/providers";
-import type { TypedEventFilter, TypedEvent, TypedListener, OnEvent, PromiseOrValue } from "../../common";
+import type {
+  TypedEventFilter,
+  TypedEvent,
+  TypedListener,
+  OnEvent,
+  PromiseOrValue,
+} from "../../common";
 
 export interface RewardStructureInterface extends utils.Interface {
   functions: {
@@ -22,9 +28,15 @@ export interface RewardStructureInterface extends utils.Interface {
 
   getFunction(nameOrSignatureOrTopic: "getRewardStructure"): FunctionFragment;
 
-  encodeFunctionData(functionFragment: "getRewardStructure", values: [PromiseOrValue<BigNumberish>]): string;
+  encodeFunctionData(
+    functionFragment: "getRewardStructure",
+    values: [PromiseOrValue<BigNumberish>]
+  ): string;
 
-  decodeFunctionResult(functionFragment: "getRewardStructure", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "getRewardStructure",
+    data: BytesLike
+  ): Result;
 
   events: {};
 }
@@ -42,9 +54,13 @@ export interface RewardStructure extends BaseContract {
     toBlock?: string | number | undefined
   ): Promise<Array<TEvent>>;
 
-  listeners<TEvent extends TypedEvent>(eventFilter?: TypedEventFilter<TEvent>): Array<TypedListener<TEvent>>;
+  listeners<TEvent extends TypedEvent>(
+    eventFilter?: TypedEventFilter<TEvent>
+  ): Array<TypedListener<TEvent>>;
   listeners(eventName?: string): Array<Listener>;
-  removeAllListeners<TEvent extends TypedEvent>(eventFilter: TypedEventFilter<TEvent>): this;
+  removeAllListeners<TEvent extends TypedEvent>(
+    eventFilter: TypedEventFilter<TEvent>
+  ): this;
   removeAllListeners(eventName?: string): this;
   off: OnEvent<this>;
   on: OnEvent<this>;
@@ -58,19 +74,31 @@ export interface RewardStructure extends BaseContract {
     ): Promise<[number[]] & { rewards: number[] }>;
   };
 
-  getRewardStructure(x: PromiseOrValue<BigNumberish>, overrides?: CallOverrides): Promise<number[]>;
+  getRewardStructure(
+    x: PromiseOrValue<BigNumberish>,
+    overrides?: CallOverrides
+  ): Promise<number[]>;
 
   callStatic: {
-    getRewardStructure(x: PromiseOrValue<BigNumberish>, overrides?: CallOverrides): Promise<number[]>;
+    getRewardStructure(
+      x: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<number[]>;
   };
 
   filters: {};
 
   estimateGas: {
-    getRewardStructure(x: PromiseOrValue<BigNumberish>, overrides?: CallOverrides): Promise<BigNumber>;
+    getRewardStructure(
+      x: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
   };
 
   populateTransaction: {
-    getRewardStructure(x: PromiseOrValue<BigNumberish>, overrides?: CallOverrides): Promise<PopulatedTransaction>;
+    getRewardStructure(
+      x: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
   };
 }
