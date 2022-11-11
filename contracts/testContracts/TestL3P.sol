@@ -42,6 +42,7 @@ abstract contract MultiTransfer is ERC20 {
         require(value.length == to.length, "Length mismatched");
 
         for (uint256 i = 0; i < to.length; i++) {
+            _spendAllowance(from, to[i], value[i]);
             _transfer(from, to[i], value[i]);
         }
         return true;
