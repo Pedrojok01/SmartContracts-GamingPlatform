@@ -14,13 +14,12 @@ node_modules
 cache/
 coverage
 coverage.json
+docs
 
 typechain
+/typechain-types
 
-artifacts/*
-!artifacts/@openzeppelin/
-!artifacts/contracts/
-!artifacts/build-info/
+/artifacts
 
 flattened*
 gas-report*

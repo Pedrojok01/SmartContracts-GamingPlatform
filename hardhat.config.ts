@@ -52,12 +52,12 @@ module.exports = {
     },
     // BNB Chain networks
     bnb_chain: {
-      url: `${process.env.API_KEY_POLYGON}`,
+      url: `${process.env.API_NODE_BSC}`,
       accounts: [privateKey],
       chainId: 56,
     },
     bnb_testnet: {
-      url: `${process.env.API_KEY_MUMBAI}`,
+      url: `${process.env.API_NODE_BSC_TEST}`,
       accounts: [privateKey],
       chainId: 97,
     },
