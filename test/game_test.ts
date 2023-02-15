@@ -5,7 +5,7 @@ import { BN_S, BN_M, BN_L, BN_XL, name1Bytes32, infiniteApproval, name2Bytes32 }
 
 describe("GameFactory", function () {
   let TestToken,
-    testL3P: Contract,
+    testToken: Contract,
     GameFactory,
     gameFactory: Contract,
     RewardStructure,
@@ -25,8 +25,8 @@ describe("GameFactory", function () {
     [deployer, addr1, addr2, addr3, addr4, addr5] = await ethers.getSigners();
 
     TestToken = await ethers.getContractFactory("TestToken");
-    testL3P = await TestToken.deploy();
-    await testL3P.deployed();
+    testToken = await TestToken.deploy();
+    await testToken.deployed();
 
     RewardStructure = await ethers.getContractFactory("RewardStructure");
     rewardStructure = await RewardStructure.deploy();
@@ -39,7 +39,7 @@ describe("GameFactory", function () {
     });
     gameFactory = await GameFactory.deploy();
     await gameFactory.deployed();
-    await gameFactory.setToken(testL3P.address);
+    await gameFactory.setToken(testToken.address);
 
     LevelLib = await ethers.getContractFactory("LevelLib");
     levelLib = await LevelLib.deploy();
@@ -50,10 +50,10 @@ describe("GameFactory", function () {
         LevelLib: levelLib.address,
       },
     });
-    paymentManager = await PaymentManager.deploy(testL3P.address, deployer.address, gameFactory.address);
+    paymentManager = await PaymentManager.deploy(testToken.address, deployer.address, gameFactory.address);
     await paymentManager.deployed();
 
-    await testL3P.approve(paymentManager.address, infiniteApproval.toString());
+    await testToken.approve(paymentManager.address, infiniteApproval.toString());
     await expect(gameFactory.createNewGame(name1Bytes32)).to.be.revertedWith("Address 0");
     await gameFactory.setAdmin(deployer.address);
     await expect(gameFactory.createNewGame(name1Bytes32)).to.be.revertedWith("Address 0");
@@ -129,7 +129,7 @@ describe("GameFactory", function () {
 
       expect(await game.numberOfPlayers()).to.equal(5);
 
-      await testL3P.approve(game.address, infiniteApproval.toString());
+      await testToken.approve(game.address, infiniteApproval.toString());
 
       await expect(game.distributeRewards(BN_XL, 2)).to.be.revertedWith("invalid value");
 
@@ -141,11 +141,11 @@ describe("GameFactory", function () {
       const statPlayer3 = await game.getPlayerStats(addr3.address);
       expect(statPlayer3.rankingScore).to.equal(10450);
 
-      expect(await testL3P.balanceOf(addr1.address)).to.equal((300 * 10 ** 18).toString());
-      expect(await testL3P.balanceOf(addr2.address)).to.equal((200 * 10 ** 18).toString());
-      expect(await testL3P.balanceOf(addr3.address)).to.equal((500 * 10 ** 18).toString());
-      expect(await testL3P.balanceOf(addr4.address)).to.equal(0);
-      expect(await testL3P.balanceOf(addr5.address)).to.equal(0);
+      expect(await testToken.balanceOf(addr1.address)).to.equal((300 * 10 ** 18).toString());
+      expect(await testToken.balanceOf(addr2.address)).to.equal((200 * 10 ** 18).toString());
+      expect(await testToken.balanceOf(addr3.address)).to.equal((500 * 10 ** 18).toString());
+      expect(await testToken.balanceOf(addr4.address)).to.equal(0);
+      expect(await testToken.balanceOf(addr5.address)).to.equal(0);
     });
 
     it("Should reset all ranking score", async function () {

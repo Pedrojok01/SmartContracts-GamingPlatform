@@ -23,7 +23,7 @@ contract Game is IGame, Ownable, Pausable, ReentrancyGuard {
     /* Storage:
      ************/
     IERC20 private immutable token;
-    address private constant FEE_RECEIVER = 0xB7B8E47423bF7191aedd3AE649Ef074C2406b52C; /// Lepricon Multisig address
+    address private constant FEE_RECEIVER = "";
     address private immutable admin; // = back-end server's address
     address private immutable paymentManager;
 
@@ -151,7 +151,7 @@ contract Game is IGame, Ownable, Pausable, ReentrancyGuard {
 
     /**
      * @notice Allows to distribute the weekly ranking rewards
-     * @param _amountToDistribute The prize pool in L3P to be distributed
+     * @param _amountToDistribute The token prize pool to be distributed
      * @param _number The number of players to rewards (see RewardStructure.sol for possible repartition)
      * ToDo: Prevent rounded number (_amountToDistribute != amountDistributed)
      */
@@ -297,21 +297,21 @@ contract Game is IGame, Ownable, Pausable, ReentrancyGuard {
      * @param _player Address of the player to update;
      * @param _sessionsPlayed Number of sessions played by the player since last update;
      * @param _xpWon Xp won by the player since last update;
-     * @param _l3pWon L3P won by the player since last update;
+     * @param _tokenWon Token won by the player since last update;
      * @param _score Best score realized by the player since last update;
      */
     function _updatePlayerStats(
         address _player,
         uint256 _sessionsPlayed,
         uint256 _xpWon,
-        uint256 _l3pWon,
+        uint256 _tokenWon,
         uint256 _score
     ) private onlyAuthorized whenNotPaused {
         SharedStructs.Player memory temp = player[_player];
         temp.xp += _xpWon;
         temp.sessionsPlayed += _sessionsPlayed;
-        temp.claimable += _l3pWon;
-        temp.totalWon += _l3pWon;
+        temp.claimable += _tokenWon;
+        temp.totalWon += _tokenWon;
         temp.rankingScore = temp.rankingScore >= _score ? temp.rankingScore : _score;
         temp.bestScore = temp.bestScore >= _score ? temp.bestScore : _score;
 

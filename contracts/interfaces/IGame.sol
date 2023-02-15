@@ -32,7 +32,7 @@ interface IGame {
      * @notice Update all players stats at once
      * @param _players Array of player's addresses to update;
      * @param _numbers Array containing all data to be updated. Numbers, in order, are:
-     *  [uint256 _sessionsPlayed, uint256 _xpWon, uint256 _l3pWon, uint256 _score];
+     *  [uint256 _sessionsPlayed, uint256 _xpWon, uint256 _tokenWon, uint256 _score];
      */
     function updateAllPlayersStats(address[] calldata _players, uint256[] calldata _numbers) external;
 

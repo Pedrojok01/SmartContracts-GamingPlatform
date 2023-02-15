@@ -5,7 +5,7 @@ pragma solidity 0.8.16;
 import "./Game.sol";
 
 /**
- * @title Main contract of the Lepricon Gamefi Platform;
+ * @title Main contract of the Gamefi Platform;
  * @author Pedrojok01
  * @notice Allows to deploy new games & tracks all global variables per player;
  */

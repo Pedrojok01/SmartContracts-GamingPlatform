@@ -5,7 +5,7 @@ import { BN_S, BN_M, BN_L, BN_XL } from "./constants";
 
 describe("Payment Manager", function () {
   let TestToken,
-    testL3P: TestToken,
+    testToken: TestToken,
     GameFactory,
     gameFactory: GameFactory,
     RewardStructure,
@@ -23,8 +23,8 @@ describe("Payment Manager", function () {
     [deployer, addr1, addr2, addr3] = await ethers.getSigners();
 
     TestToken = await ethers.getContractFactory("TestToken");
-    testL3P = await TestToken.deploy();
-    await testL3P.deployed();
+    testToken = await TestToken.deploy();
+    await testToken.deployed();
 
     RewardStructure = await ethers.getContractFactory("RewardStructure");
     rewardStructure = await RewardStructure.deploy();
@@ -38,7 +38,7 @@ describe("Payment Manager", function () {
     gameFactory = await GameFactory.deploy();
     await gameFactory.deployed();
     await gameFactory.setAdmin(deployer.address);
-    await gameFactory.setToken(testL3P.address);
+    await gameFactory.setToken(testToken.address);
 
     LevelLib = await ethers.getContractFactory("LevelLib");
     levelLib = await LevelLib.deploy();
@@ -51,13 +51,13 @@ describe("Payment Manager", function () {
     });
 
     await expect(
-      PaymentManager.deploy(testL3P.address, ethers.constants.AddressZero, gameFactory.address)
+      PaymentManager.deploy(testToken.address, ethers.constants.AddressZero, gameFactory.address)
     ).to.be.revertedWith("Zero address");
 
-    paymentManager = await PaymentManager.deploy(testL3P.address, deployer.address, gameFactory.address);
+    paymentManager = await PaymentManager.deploy(testToken.address, deployer.address, gameFactory.address);
     await paymentManager.deployed();
 
-    await testL3P.approve(paymentManager.address, BN_XL);
+    await testToken.approve(paymentManager.address, BN_XL);
     await gameFactory.setPaymentManager(paymentManager.address);
   });
 
@@ -69,7 +69,7 @@ describe("Payment Manager", function () {
     });
 
     it("Should set the right token address", async function () {
-      expect(await paymentManager.token()).to.equal(testL3P.address);
+      expect(await paymentManager.token()).to.equal(testToken.address);
     });
 
     it("Should set the payment address and emit an event", async function () {
@@ -165,8 +165,8 @@ describe("Payment Manager", function () {
         .to.emit(paymentManager, "WithdrawnBatch")
         .withArgs([addr1.address, addr2.address], [BN_L, BN_S]);
 
-      expect(await testL3P.balanceOf(addr1.address)).to.equal(BN_L);
-      expect(await testL3P.balanceOf(addr2.address)).to.equal(BN_S);
+      expect(await testToken.balanceOf(addr1.address)).to.equal(BN_L);
+      expect(await testToken.balanceOf(addr2.address)).to.equal(BN_S);
     });
   });
 

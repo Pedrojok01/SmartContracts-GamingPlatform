@@ -4,7 +4,7 @@ pragma solidity 0.8.16;
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
 /**
- * @title Lepricon Test Token
+ * @title Test Token
  * @notice Basic ERC20 Token, where all tokens are pre-assigned to the creator;
  * @dev multiTransfer & multiTransferFrom functions addtion for batch transfer;
  */
